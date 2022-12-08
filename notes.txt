@@ -1,0 +1,6 @@
+so far I have:
+- added accum/sw PIO on NIOS II setup and modified toplevel to reflect newly added inputs
+
+now I have to:
+- change sdc files for newly added inputs
+- try out eclipse to make accumulator!

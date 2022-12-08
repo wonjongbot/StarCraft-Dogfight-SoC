@@ -1,0 +1,455 @@
+//ECE 385 USB Host Shield code
+//based on Circuits-at-home USB Host code 1.x
+//to be used for ECE 385 course materials
+//Revised October 2020 - Zuofu Cheng
+
+#include <stdio.h>
+#include <math.h>
+#include <stdint.h>
+#include "system.h"
+#include "altera_avalon_spi.h"
+#include "altera_avalon_spi_regs.h"
+#include "altera_avalon_pio_regs.h"
+#include "sys/alt_irq.h"
+#include "usb_kb/GenericMacros.h"
+#include "usb_kb/GenericTypeDefs.h"
+#include "usb_kb/HID.h"
+#include "usb_kb/MAX3421E.h"
+#include "usb_kb/transfer.h"
+#include "usb_kb/usb_ch9.h"
+#include "usb_kb/USB.h"
+
+extern HID_DEVICE hid_device;
+
+static BYTE addr = 1; 				//hard-wired USB address
+const char* const devclasses[] = { " Uninitialized", " HID Keyboard", " HID Mouse", " Mass storage" };
+
+BYTE GetDriverandReport() {
+	BYTE i;
+	BYTE rcode;
+	BYTE device = 0xFF;
+	BYTE tmpbyte;
+
+	DEV_RECORD* tpl_ptr;
+	printf("Reached USB_STATE_RUNNING (0x40)\n");
+	for (i = 1; i < USB_NUMDEVICES; i++) {
+		tpl_ptr = GetDevtable(i);
+		if (tpl_ptr->epinfo != NULL) {
+			printf("Device: %d", i);
+			printf("%s \n", devclasses[tpl_ptr->devclass]);
+			device = tpl_ptr->devclass;
+		}
+	}
+	//Query rate and protocol
+	rcode = XferGetIdle(addr, 0, hid_device.interface, 0, &tmpbyte);
+	if (rcode) {   //error handling
+		printf("GetIdle Error. Error code: ");
+		printf("%x \n", rcode);
+	} else {
+		printf("Update rate: ");
+		printf("%x \n", tmpbyte);
+	}
+	printf("Protocol: ");
+	rcode = XferGetProto(addr, 0, hid_device.interface, &tmpbyte);
+	if (rcode) {   //error handling
+		printf("GetProto Error. Error code ");
+		printf("%x \n", rcode);
+	} else {
+		printf("%d \n", tmpbyte);
+	}
+	return device;
+}
+
+void setLED(int LED) {
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDS_PIO_BASE,
+			(IORD_ALTERA_AVALON_PIO_DATA(LEDS_PIO_BASE) | (0x001 << LED)));
+}
+
+void clearLED(int LED) {
+	IOWR_ALTERA_AVALON_PIO_DATA(LEDS_PIO_BASE,
+			(IORD_ALTERA_AVALON_PIO_DATA(LEDS_PIO_BASE) & ~(0x001 << LED)));
+
+}
+
+void printSignedHex0(signed char value) {
+	BYTE tens = 0;
+	BYTE ones = 0;
+	WORD pio_val = IORD_ALTERA_AVALON_PIO_DATA(HEX_DIGITS_PIO_BASE);
+	if (value < 0) {
+		setLED(11);
+		value = -value;
+	} else {
+		clearLED(11);
+	}
+	//handled hundreds
+	if (value / 100)
+		setLED(13);
+	else
+		clearLED(13);
+
+	value = value % 100;
+	tens = value / 10;
+	ones = value % 10;
+
+	pio_val &= 0x00FF;
+	pio_val |= (tens << 12);
+	pio_val |= (ones << 8);
+
+	IOWR_ALTERA_AVALON_PIO_DATA(HEX_DIGITS_PIO_BASE, pio_val);
+}
+
+void printSignedHex1(signed char value) {
+	BYTE tens = 0;
+	BYTE ones = 0;
+	DWORD pio_val = IORD_ALTERA_AVALON_PIO_DATA(HEX_DIGITS_PIO_BASE);
+	if (value < 0) {
+		setLED(10);
+		value = -value;
+	} else {
+		clearLED(10);
+	}
+	//handled hundreds
+	if (value / 100)
+		setLED(12);
+	else
+		clearLED(12);
+
+	value = value % 100;
+	tens = value / 10;
+	ones = value % 10;
+	tens = value / 10;
+	ones = value % 10;
+
+	pio_val &= 0xFF00;
+	pio_val |= (tens << 4);
+	pio_val |= (ones << 0);
+
+	IOWR_ALTERA_AVALON_PIO_DATA(HEX_DIGITS_PIO_BASE, pio_val);
+}
+
+void setKeycode(WORD keycode)
+{
+	// what I changed for the keycode
+	IOWR_ALTERA_AVALON_PIO_DATA(KEYCODE_BASE, keycode);
+}
+
+
+int main() {
+	BYTE rcode;
+	BOOT_MOUSE_REPORT buf;		//USB mouse report
+	BOOT_KBD_REPORT kbdbuf;
+
+	BYTE runningdebugflag = 0;//flag to dump out a bunch of information when we first get to USB_STATE_RUNNING
+	BYTE errorflag = 0; //flag once we get an error device so we don't keep dumping out state info
+	BYTE device;
+	WORD keycode;
+
+	int prevleftP1, prevrightP1,prevleftP2, prevrightP2;
+	int counterP1 = 0, counterP2 = 0, countermarine = 0, counterp1x = 0, counterp1y = 0;
+	int leftP1, leftP2 = 0;
+	int rightP1, rightP2 = 0;
+	int motionp1x, motionp1y;
+	int* collisionP1 = COLLISIONP1_BASE;
+	int prevcollision = 0, prevcollision1 = 0, prevcollision2 = 0, prevcollision3 = 0;
+
+	uint8_t *statemarine = MARINE_ENUM_BASE;
+	uint8_t oldstatemarine = *statemarine;
+	uint8_t *stateP1 = SPRITE_ENUM_BASE;
+	uint8_t oldstateP1 = *stateP1;
+
+	uint8_t *stateP2 = SPRITE_ENUM2_BASE;
+	uint8_t oldstateP2 = *stateP2;
+
+	unsigned int *player1x = PLAYER1X_BASE;
+	unsigned int *player1y = PLAYER1Y_BASE;
+
+	int prevx1 = *player1x;
+	int prevy1 = *player1y;
+
+	*player1x = 250;
+	*player1y = 250;
+
+	printf("HEXDIGIT: %x\n\n", HEX_DIGITS_PIO_BASE);
+	printf("LED: %x\n\n", LEDS_PIO_BASE);
+	printf("initializing MAX3421E...\n");
+	MAX3421E_init();
+	printf("initializing USB...\n");
+	printf("Testing read function....\n");
+	int ret_val = MAXreg_rd(rREVISION);
+	printf("output: %x", ret_val);
+	USB_init();
+	while (1) {
+		//printf(".");
+		setKeycode(kbdbuf.keycode[0]);
+		IOWR_ALTERA_AVALON_PIO_DATA(KEYCODE1_BASE, kbdbuf.keycode[1]);
+		IOWR_ALTERA_AVALON_PIO_DATA(KEYCODE2_BASE, kbdbuf.keycode[2]);
+		IOWR_ALTERA_AVALON_PIO_DATA(KEYCODE3_BASE, kbdbuf.keycode[3]);
+		IOWR_ALTERA_AVALON_PIO_DATA(KEYCODE4_BASE, kbdbuf.keycode[4]);
+		IOWR_ALTERA_AVALON_PIO_DATA(KEYCODE5_BASE, kbdbuf.keycode[5]);
+		printSignedHex0(kbdbuf.keycode[0]);
+		printSignedHex1(kbdbuf.keycode[1]);
+
+		// player 1 logic
+		oldstateP1 = *stateP1;
+		if(kbdbuf.keycode[0] == 0x04 || kbdbuf.keycode[1] == 0x04 || kbdbuf.keycode[2] == 0x04
+				|| kbdbuf.keycode[3] == 0x04 || kbdbuf.keycode[4] == 0x04){
+			leftP1 = 1;
+		}
+		else
+			leftP1 = 0;
+		if(kbdbuf.keycode[0] == 0x07 || kbdbuf.keycode[1] == 0x07 || kbdbuf.keycode[2] == 0x07
+				|| kbdbuf.keycode[3] == 0x07 || kbdbuf.keycode[4] == 0x07){
+			rightP1 = 1;
+		}
+		else
+			rightP1 = 0;
+		if(leftP1 && leftP1 != prevleftP1){
+			*stateP1 = oldstateP1 + 1;
+			counterP1 = 0;
+		}
+		else if(rightP1 && rightP1 != prevrightP1){
+			*stateP1 = oldstateP1 - 1;
+			counterP1 = 0;
+		}
+		if(leftP1 && counterP1 >= 50){
+			*stateP1 = oldstateP1 + 1;
+			counterP1 = 0;
+		}
+		else if(rightP1 && counterP1 >= 50){
+			*stateP1 = oldstateP1 - 1;
+			counterP1 = 0;
+		}
+
+		oldstatemarine = *statemarine;
+		if(countermarine >= 80){
+			*statemarine = oldstatemarine + 1;
+			countermarine = 0;
+		}
+
+		if (*statemarine >= 15){
+			*statemarine = 0;
+		}
+		counterP1 += 1;
+		countermarine += 1;
+
+		*stateP1 &= 0x0f;
+		prevleftP1 = leftP1;
+		prevrightP1 = rightP1;
+
+		switch(*stateP1){
+		case 0:
+			motionp1x = 0;
+			motionp1y = -3;
+			break;
+		case 1:
+			motionp1x = -1;
+			motionp1y = -3;
+			break;
+		case 2:
+			motionp1x = -2;
+			motionp1y = -2;
+			break;
+		case 3:
+			motionp1x = -3;
+			motionp1y = -1;
+			break;
+		case 4:
+			motionp1x = -3;
+			motionp1y = 0;
+			break;
+		case 5:
+			motionp1x = -3;
+			motionp1y = 1;
+			break;
+		case 6:
+			motionp1x = -2;
+			motionp1y = 2;
+			break;
+		case 7:
+			motionp1x = -1;
+			motionp1y = 3;
+			break;
+		case 8:
+			motionp1x = 0;
+			motionp1y = 3;
+			break;
+		case 9:
+			motionp1x = 1;
+			motionp1y = 3;
+			break;
+		case 10:
+			motionp1x = 2;
+			motionp1y = 2;
+			break;
+		case 11:
+			motionp1x = 3;
+			motionp1y = 1;
+			break;
+		case 12:
+			motionp1x = 3;
+			motionp1y = 0;
+			break;
+		case 13:
+			motionp1x = 3;
+			motionp1y = -1;
+			break;
+		case 14:
+			motionp1x = 2;
+			motionp1y = -2;
+			break;
+		case 15:
+			motionp1x = 1;
+			motionp1y = -3;
+			break;
+		}
+		// moving movement logic into NIOS II end
+		if(	(kbdbuf.keycode[0] == 26 || kbdbuf.keycode[1] == 26 || kbdbuf.keycode[2] == 26
+			|| kbdbuf.keycode[3] == 26 || kbdbuf.keycode[4] == 26 || kbdbuf.keycode[5] == 26) && counterp1x == 20){
+			if(*collisionP1 == 0 && prevcollision == 0 && prevcollision1 == 0 && prevcollision2 == 0 && prevcollision3 == 0){
+				prevx1 = *player1x;
+				prevy1 = *player1y;
+				*player1y += motionp1y;
+				*player1x += motionp1x;
+			}
+			else{
+				*player1y = prevy1;
+				*player1x = prevx1;
+			}
+			counterp1x = 0;
+		}
+		else if(	(kbdbuf.keycode[0] == 22 || kbdbuf.keycode[1] == 22 || kbdbuf.keycode[2] == 22
+			|| kbdbuf.keycode[3] == 22 || kbdbuf.keycode[4] == 22 || kbdbuf.keycode[5] == 22) && counterp1x == 20){
+			if(*collisionP1 == 0){
+				prevx1 = *player1x;
+				prevy1 = *player1y;
+				*player1y -= motionp1y;
+				*player1x -= motionp1x;
+			}
+			else{
+				*player1y = prevy1;
+				*player1x = prevx1;
+			}
+			counterp1x = 0;
+		}
+		if(counterp1x >20){
+			counterp1x = 0;
+		}
+		counterp1x += 1;
+		prevcollision = *collisionP1;
+		prevcollision1 = prevcollision;
+		prevcollision2 = prevcollision1;
+		prevcollision3 = prevcollision2;
+		// player 2 logic
+		oldstateP2 = *stateP2;
+		if(kbdbuf.keycode[0] == 80 || kbdbuf.keycode[1] == 80 || kbdbuf.keycode[2] == 80
+				|| kbdbuf.keycode[3] == 80 || kbdbuf.keycode[4] == 80){
+			leftP2 = 1;
+		}
+		else
+			leftP2 = 0;
+		if(kbdbuf.keycode[0] == 79 || kbdbuf.keycode[1] == 79 || kbdbuf.keycode[2] == 79
+				|| kbdbuf.keycode[3] == 79 || kbdbuf.keycode[4] == 79){
+			rightP2 = 1;
+		}
+		else
+			rightP2 = 0;
+		if(leftP2 && leftP2 != prevleftP2){
+			*stateP2 = oldstateP2 + 1;
+			counterP2 = 0;
+		}
+		else if(rightP2 && rightP2 != prevrightP2){
+			*stateP2 = oldstateP2 - 1;
+			counterP2 = 0;
+		}
+		if(leftP2 && counterP2 >= 100){
+			*stateP2 = oldstateP2 + 1;
+			counterP2 = 0;
+		}
+		else if(rightP2 && counterP2 >= 100){
+			*stateP2 = oldstateP2 - 1;
+			counterP2 = 0;
+		}
+		counterP2 += 1;
+		*stateP2 &= 0x0f;
+		prevleftP2 = leftP2;
+		prevrightP2 = rightP2;
+
+		MAX3421E_Task();
+		USB_Task();
+		//usleep (500000);
+		if (GetUsbTaskState() == USB_STATE_RUNNING) {
+			if (!runningdebugflag) {
+				runningdebugflag = 1;
+				setLED(9);
+				device = GetDriverandReport();
+			} else if (device == 1) {
+				//run keyboard debug polling
+				rcode = kbdPoll(&kbdbuf);
+				if (rcode == hrNAK) {
+					continue; //NAK means no new data
+				} else if (rcode) {
+					printf("Rcode: ");
+					printf("%x \n", rcode);
+					continue;
+				}
+				//printf("keycodes: ");
+//				for (int i = 0; i < 6; i++) {
+//					printf("%x ", kbdbuf.keycode[i]);
+//				}
+			}
+
+			else if (device == 2) {
+				rcode = mousePoll(&buf);
+				if (rcode == hrNAK) {
+					//NAK means no new data
+					continue;
+				} else if (rcode) {
+					printf("Rcode: ");
+					printf("%x \n", rcode);
+					continue;
+				}
+				printf("X displacement: ");
+				printf("%d ", (signed char) buf.Xdispl);
+				printSignedHex0((signed char) buf.Xdispl);
+				printf("Y displacement: ");
+				printf("%d ", (signed char) buf.Ydispl);
+				printSignedHex1((signed char) buf.Ydispl);
+				printf("Buttons: ");
+				printf("%x\n", buf.button);
+				if (buf.button & 0x04)
+					setLED(2);
+				else
+					clearLED(2);
+				if (buf.button & 0x02)
+					setLED(1);
+				else
+					clearLED(1);
+				if (buf.button & 0x01)
+					setLED(0);
+				else
+					clearLED(0);
+			}
+		} else if (GetUsbTaskState() == USB_STATE_ERROR) {
+			if (!errorflag) {
+				errorflag = 1;
+				clearLED(9);
+				printf("USB Error State\n");
+				//print out string descriptor here
+			}
+		} else //not in USB running state
+		{
+
+			printf("USB task state: ");
+			printf("%x\n", GetUsbTaskState());
+			if (runningdebugflag) {	//previously running, reset USB hardware just to clear out any funky state, HS/FS etc
+				runningdebugflag = 0;
+				MAX3421E_init();
+				USB_init();
+			}
+			errorflag = 0;
+			clearLED(9);
+		}
+
+	}
+	return 0;
+}

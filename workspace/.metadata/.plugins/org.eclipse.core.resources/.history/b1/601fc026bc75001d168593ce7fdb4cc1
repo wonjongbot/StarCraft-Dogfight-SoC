@@ -1,0 +1,29 @@
+/*
+ * player.h
+ *
+ *  Created on: Dec 6, 2022
+ *      Author: wonjo
+ */
+
+#ifndef PLAYER_H_
+#define PLAYER_H_
+
+struct player
+{
+	int* x_loc;
+	int* y_loc;
+	int motion_x;
+	int motion_y;
+	uint8_t* state;
+	uint8_t* state_prev;
+	int* anim_enum;
+	int* missile_x;
+	int* missile_y;
+	int* collision;
+	int* left;
+	int* right;
+};
+
+
+
+#endif /* PLAYER_H_ */
