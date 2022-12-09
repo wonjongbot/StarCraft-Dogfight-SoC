@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Dec 6, 2022 10:08:34 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1670386114037</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Dec 9, 2022 1:04:47 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1670612687991</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>D:\ECE385\quartus_project\final_project\final_project\software\usb_kb_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\lab62_soc.sopcinfo</SopcDesignFile>
@@ -917,200 +917,266 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>p1_hit</slaveDescriptor>
-                <addressRange>0x000002C0 - 0x000002CF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>p2_hit</slaveDescriptor>
-                <addressRange>0x000002D0 - 0x000002DF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>scorep1</slaveDescriptor>
-                <addressRange>0x000002E0 - 0x000002EF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>scorep2</slaveDescriptor>
-                <addressRange>0x000002F0 - 0x000002FF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>missile2_y</slaveDescriptor>
-                <addressRange>0x00000300 - 0x0000030F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>missile2_x</slaveDescriptor>
-                <addressRange>0x00000310 - 0x0000031F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>missile1_y</slaveDescriptor>
-                <addressRange>0x00000320 - 0x0000032F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>missile1_x</slaveDescriptor>
-                <addressRange>0x00000330 - 0x0000033F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>player2x</slaveDescriptor>
-                <addressRange>0x00000340 - 0x0000034F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>player2y</slaveDescriptor>
-                <addressRange>0x00000350 - 0x0000035F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>collisionP2</slaveDescriptor>
-                <addressRange>0x00000360 - 0x0000036F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>sprite2_animation</slaveDescriptor>
+                <slaveDescriptor>splashscreen_x</slaveDescriptor>
                 <addressRange>0x00000370 - 0x0000037F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>collisionP1</slaveDescriptor>
+                <slaveDescriptor>splashscreen_y</slaveDescriptor>
                 <addressRange>0x00000380 - 0x0000038F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>player1y</slaveDescriptor>
+                <slaveDescriptor>p2_accent</slaveDescriptor>
                 <addressRange>0x00000390 - 0x0000039F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>player1x</slaveDescriptor>
+                <slaveDescriptor>p1_accent</slaveDescriptor>
                 <addressRange>0x000003A0 - 0x000003AF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>marine_enum</slaveDescriptor>
+                <slaveDescriptor>p2_suicide</slaveDescriptor>
                 <addressRange>0x000003B0 - 0x000003BF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>sprite_enum2</slaveDescriptor>
+                <slaveDescriptor>p1_suicide</slaveDescriptor>
                 <addressRange>0x000003C0 - 0x000003CF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>keycode5</slaveDescriptor>
+                <slaveDescriptor>explosion_x</slaveDescriptor>
                 <addressRange>0x000003D0 - 0x000003DF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>keycode1</slaveDescriptor>
+                <slaveDescriptor>explosion_y</slaveDescriptor>
                 <addressRange>0x000003E0 - 0x000003EF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>keycode2</slaveDescriptor>
+                <slaveDescriptor>explosion_enum</slaveDescriptor>
                 <addressRange>0x000003F0 - 0x000003FF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>keycode3</slaveDescriptor>
+                <slaveDescriptor>collision_ms1</slaveDescriptor>
                 <addressRange>0x00000400 - 0x0000040F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>keycode4</slaveDescriptor>
+                <slaveDescriptor>collision_ms2</slaveDescriptor>
                 <addressRange>0x00000410 - 0x0000041F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>sprite_enum</slaveDescriptor>
+                <slaveDescriptor>p1_hit</slaveDescriptor>
                 <addressRange>0x00000420 - 0x0000042F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>key</slaveDescriptor>
+                <slaveDescriptor>p2_hit</slaveDescriptor>
                 <addressRange>0x00000430 - 0x0000043F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>leds_pio</slaveDescriptor>
+                <slaveDescriptor>scorep1</slaveDescriptor>
                 <addressRange>0x00000440 - 0x0000044F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>hex_digits_pio</slaveDescriptor>
+                <slaveDescriptor>scorep2</slaveDescriptor>
                 <addressRange>0x00000450 - 0x0000045F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>usb_rst</slaveDescriptor>
+                <slaveDescriptor>missile2_y</slaveDescriptor>
                 <addressRange>0x00000460 - 0x0000046F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>usb_gpx</slaveDescriptor>
+                <slaveDescriptor>missile2_x</slaveDescriptor>
                 <addressRange>0x00000470 - 0x0000047F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>usb_irq</slaveDescriptor>
+                <slaveDescriptor>missile1_y</slaveDescriptor>
                 <addressRange>0x00000480 - 0x0000048F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>keycode</slaveDescriptor>
+                <slaveDescriptor>missile1_x</slaveDescriptor>
                 <addressRange>0x00000490 - 0x0000049F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>sdram_pll</slaveDescriptor>
+                <slaveDescriptor>player2x</slaveDescriptor>
                 <addressRange>0x000004A0 - 0x000004AF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>player2y</slaveDescriptor>
+                <addressRange>0x000004B0 - 0x000004BF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>collisionP2</slaveDescriptor>
+                <addressRange>0x000004C0 - 0x000004CF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>sprite2_animation</slaveDescriptor>
+                <addressRange>0x000004D0 - 0x000004DF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>collisionP1</slaveDescriptor>
+                <addressRange>0x000004E0 - 0x000004EF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>player1y</slaveDescriptor>
+                <addressRange>0x000004F0 - 0x000004FF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>player1x</slaveDescriptor>
+                <addressRange>0x00000500 - 0x0000050F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>marine_enum</slaveDescriptor>
+                <addressRange>0x00000510 - 0x0000051F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>sprite_enum2</slaveDescriptor>
+                <addressRange>0x00000520 - 0x0000052F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>keycode5</slaveDescriptor>
+                <addressRange>0x00000530 - 0x0000053F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>keycode1</slaveDescriptor>
+                <addressRange>0x00000540 - 0x0000054F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>keycode2</slaveDescriptor>
+                <addressRange>0x00000550 - 0x0000055F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>keycode3</slaveDescriptor>
+                <addressRange>0x00000560 - 0x0000056F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>keycode4</slaveDescriptor>
+                <addressRange>0x00000570 - 0x0000057F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>sprite_enum</slaveDescriptor>
+                <addressRange>0x00000580 - 0x0000058F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>key</slaveDescriptor>
+                <addressRange>0x00000590 - 0x0000059F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>leds_pio</slaveDescriptor>
+                <addressRange>0x000005A0 - 0x000005AF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>hex_digits_pio</slaveDescriptor>
+                <addressRange>0x000005B0 - 0x000005BF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>usb_rst</slaveDescriptor>
+                <addressRange>0x000005C0 - 0x000005CF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>usb_gpx</slaveDescriptor>
+                <addressRange>0x000005D0 - 0x000005DF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>usb_irq</slaveDescriptor>
+                <addressRange>0x000005E0 - 0x000005EF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>keycode</slaveDescriptor>
+                <addressRange>0x000005F0 - 0x000005FF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>sdram_pll</slaveDescriptor>
+                <addressRange>0x00000600 - 0x0000060F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>sysid_qsys_0</slaveDescriptor>
-                <addressRange>0x000004C0 - 0x000004C7</addressRange>
+                <addressRange>0x00000620 - 0x00000627</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>jtag_uart_0</slaveDescriptor>
-                <addressRange>0x000004C8 - 0x000004CF</addressRange>
+                <addressRange>0x00000628 - 0x0000062F</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>

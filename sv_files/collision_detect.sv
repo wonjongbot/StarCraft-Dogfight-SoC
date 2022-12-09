@@ -194,8 +194,8 @@ module collision_detect	(	input clk,
 	logic col_map_data1;
 	logic col_map_data2;
 	
-	assign col_map_addr1 = ((x_pos1+16) >> 1) + (((y_pos1+24)>>1)*320);
-	assign col_map_addr2 = ((x_pos2+16) >> 1) + (((y_pos2+24)>>1)*320);
+	assign col_map_addr1 = ((x_pos1) >> 1) + (((y_pos1)>>1)*320);
+	assign col_map_addr2 = ((x_pos2) >> 1) + (((y_pos2)>>1)*320);
 	
 	collision_map u1 (.addr_a(col_map_addr1), .addr_b(col_map_addr2), .Clk(clk), .q_a(col_map_data1), .q_b(col_map_data2));
 	

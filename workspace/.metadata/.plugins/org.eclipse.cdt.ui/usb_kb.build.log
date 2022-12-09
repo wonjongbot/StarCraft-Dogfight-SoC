@@ -1,9 +1,113 @@
-01:22:56 **** Incremental Build of configuration Nios II for project usb_kb ****
+13:15:05 **** Incremental Build of configuration Nios II for project usb_kb ****
 make all 
 Info: Building ../usb_kb_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../usb_kb_bsp/
 [BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc -xc -MP -MMD -c -I../usb_kb_bsp//HAL/inc -I../usb_kb_bsp/ -I../usb_kb_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/main.o main.c
+main.c: In function 'main':
+main.c:540:20: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  game.ui_anim_enum = MARINE_ENUM_BASE; *(game.ui_anim_enum) = 0;
+                    ^
+main.c:541:16: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  game.score_p1 = SCOREP1_BASE; *(game.score_p1) = 0x30;
+                ^
+main.c:542:16: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  game.score_p2 = SCOREP2_BASE; *(game.score_p2) = 0x30;
+                ^
+main.c:543:14: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  game.hit_p1 = P1_HIT_BASE; game.hit_p1_prev = *(game.hit_p1);
+              ^
+main.c:544:14: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  game.hit_p2 = P2_HIT_BASE; game.hit_p1_prev = *(game.hit_p2);
+              ^
+main.c:545:18: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  game.suicide_p1 = P1_SUICIDE_BASE; game.suicide_p1_prev = *(game.suicide_p1);
+                  ^
+main.c:546:18: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  game.suicide_p2 = P2_SUICIDE_BASE; game.suicide_p2_prev = *(game.suicide_p1);
+                  ^
+main.c:548:22: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  game.explosion_enum = EXPLOSION_ENUM_BASE; *(game.explosion_enum) = 1;
+                      ^
+main.c:549:19: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  game.explosion_x = EXPLOSION_X_BASE; *(game.explosion_x) = OUT_OF_SCREEN;
+                   ^
+main.c:550:19: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  game.explosion_y = EXPLOSION_Y_BASE; *(game.explosion_y) = OUT_OF_SCREEN;
+                   ^
+main.c:553:16: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  game.splash_x = SPLASHSCREEN_X_BASE; *(game.splash_x) = SPLASH_X;
+                ^
+main.c:554:16: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  game.splash_y = SPLASHSCREEN_Y_BASE; *(game.splash_y) = SPLASH_Y;
+                ^
+main.c:562:16: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player1.x_loc = PLAYER1X_BASE; *(player1.x_loc) = player1.respawn_x;
+                ^
+main.c:563:16: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player1.y_loc = PLAYER1Y_BASE; *(player1.y_loc) = player1.respawn_y;
+                ^
+main.c:567:14: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player1.dir = SPRITE_ENUM_BASE; *(player1.dir) = 0;
+              ^
+main.c:570:20: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player1.missile_x = MISSILE1_X_BASE; *(player1.missile_x) = OUT_OF_SCREEN; player1.missile_x_prev = OUT_OF_SCREEN;
+                    ^
+main.c:571:20: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player1.missile_y = MISSILE1_Y_BASE; *(player1.missile_y) = OUT_OF_SCREEN; player1.missile_y_prev = OUT_OF_SCREEN;
+                    ^
+main.c:574:20: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player1.collision = COLLISIONP1_BASE;
+                    ^
+main.c:576:28: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player1.missile_collision = COLLISION_MS1_BASE;
+                            ^
+main.c:584:17: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player1.accent = P1_ACCENT_BASE; *(player1.accent) = 0xF60202;
+                 ^
+main.c:592:16: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player2.x_loc = PLAYER2X_BASE; *(player2.x_loc) = player2.respawn_x;
+                ^
+main.c:593:16: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player2.y_loc = PLAYER2Y_BASE; *(player2.y_loc) = player2.respawn_y;
+                ^
+main.c:598:14: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player2.dir = SPRITE_ENUM2_BASE;
+              ^
+main.c:600:20: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player2.anim_enum = SPRITE2_ANIMATION_BASE; *(player2.anim_enum) = 0;
+                    ^
+main.c:601:20: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player2.missile_x = MISSILE2_X_BASE; *(player2.missile_x) = OUT_OF_SCREEN; player2.missile_x_prev = OUT_OF_SCREEN;
+                    ^
+main.c:602:20: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player2.missile_y = MISSILE2_Y_BASE; *(player2.missile_y) = OUT_OF_SCREEN; player2.missile_y_prev = OUT_OF_SCREEN;
+                    ^
+main.c:605:20: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player2.collision = COLLISIONP2_BASE;
+                    ^
+main.c:607:28: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player2.missile_collision = COLLISION_MS2_BASE;
+                            ^
+main.c:615:17: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+  player2.accent = P2_ACCENT_BASE; *(player2.accent) = 0x81147E;
+                 ^
+In file included from main.c:10:0:
+../usb_kb_bsp/system.h:434:18: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ #define KEY_BASE 0x590
+                  ^
+main.c:638:13: note: in expansion of macro 'KEY_BASE'
+  int* key = KEY_BASE;
+             ^
+Info: Linking usb_kb.elf
+nios2-elf-g++  -T'../usb_kb_bsp//linker.x' -msys-crt0='../usb_kb_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../usb_kb_bsp/   -Wl,-Map=usb_kb.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o usb_kb.elf obj/default/main.o obj/default/usb_kb/HID.o obj/default/usb_kb/MAX3421E.o obj/default/usb_kb/transfer.o -lm -msys-lib=m
+nios2-elf-insert usb_kb.elf --thread_model hal --cpu_name nios2_gen2_0 --qsys true --simulation_enabled false --id 0 --sidp 0x620 --timestamp 1670610871 --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name lab62_soc --quartus_project_dir "D:/ECE385/quartus_project/final_project/final_project" --jdi ../..//output_files/adder2.jdi --sopcinfo D:/ECE385/quartus_project/final_project/final_project/software/usb_kb_bsp/../../lab62_soc.sopcinfo
+Info: (usb_kb.elf) 103 KBytes program size (code + initialized data).
+Info:              65425 KBytes free for stack + heap.
+Info: Creating usb_kb.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source usb_kb.elf >usb_kb.objdump
 [usb_kb build complete]
 
-01:22:57 Build Finished (took 1s.60ms)
+13:15:07 Build Finished (took 2s.115ms)
 

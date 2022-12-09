@@ -1,6 +1,12 @@
 	lab62_soc u0 (
 		.clk_clk                        (<connected-to-clk_clk>),                        //                     clk.clk
+		.collision_ms1_export           (<connected-to-collision_ms1_export>),           //           collision_ms1.export
+		.collision_ms2_export           (<connected-to-collision_ms2_export>),           //           collision_ms2.export
 		.collisionp1_export             (<connected-to-collisionp1_export>),             //             collisionp1.export
+		.collisionp2_export             (<connected-to-collisionp2_export>),             //             collisionp2.export
+		.explosion_enum_export          (<connected-to-explosion_enum_export>),          //          explosion_enum.export
+		.explosion_x_export             (<connected-to-explosion_x_export>),             //             explosion_x.export
+		.explosion_y_export             (<connected-to-explosion_y_export>),             //             explosion_y.export
 		.hex_digits_export              (<connected-to-hex_digits_export>),              //              hex_digits.export
 		.key_external_connection_export (<connected-to-key_external_connection_export>), // key_external_connection.export
 		.keycode_export                 (<connected-to-keycode_export>),                 //                 keycode.export
@@ -11,9 +17,23 @@
 		.keycode5_export                (<connected-to-keycode5_export>),                //                keycode5.export
 		.leds_export                    (<connected-to-leds_export>),                    //                    leds.export
 		.marine_enum_export             (<connected-to-marine_enum_export>),             //             marine_enum.export
+		.missile1_x_export              (<connected-to-missile1_x_export>),              //              missile1_x.export
+		.missile1_y_export              (<connected-to-missile1_y_export>),              //              missile1_y.export
+		.missile2_x_export              (<connected-to-missile2_x_export>),              //              missile2_x.export
+		.missile2_y_export              (<connected-to-missile2_y_export>),              //              missile2_y.export
+		.p1_accent_export               (<connected-to-p1_accent_export>),               //               p1_accent.export
+		.p1_hit_export                  (<connected-to-p1_hit_export>),                  //                  p1_hit.export
+		.p1_suicide_export              (<connected-to-p1_suicide_export>),              //              p1_suicide.export
+		.p2_accent_export               (<connected-to-p2_accent_export>),               //               p2_accent.export
+		.p2_hit_export                  (<connected-to-p2_hit_export>),                  //                  p2_hit.export
+		.p2_suicide_export              (<connected-to-p2_suicide_export>),              //              p2_suicide.export
 		.player1x_export                (<connected-to-player1x_export>),                //                player1x.export
 		.player1y_export                (<connected-to-player1y_export>),                //                player1y.export
+		.player2x_export                (<connected-to-player2x_export>),                //                player2x.export
+		.player2y_export                (<connected-to-player2y_export>),                //                player2y.export
 		.reset_reset_n                  (<connected-to-reset_reset_n>),                  //                   reset.reset_n
+		.scorep1_export                 (<connected-to-scorep1_export>),                 //                 scorep1.export
+		.scorep2_export                 (<connected-to-scorep2_export>),                 //                 scorep2.export
 		.sdram_clk_clk                  (<connected-to-sdram_clk_clk>),                  //               sdram_clk.clk
 		.sdram_wire_addr                (<connected-to-sdram_wire_addr>),                //              sdram_wire.addr
 		.sdram_wire_ba                  (<connected-to-sdram_wire_ba>),                  //                        .ba
@@ -34,16 +54,7 @@
 		.usb_gpx_export                 (<connected-to-usb_gpx_export>),                 //                 usb_gpx.export
 		.usb_irq_export                 (<connected-to-usb_irq_export>),                 //                 usb_irq.export
 		.usb_rst_export                 (<connected-to-usb_rst_export>),                 //                 usb_rst.export
-		.collisionp2_export             (<connected-to-collisionp2_export>),             //             collisionp2.export
-		.player2x_export                (<connected-to-player2x_export>),                //                player2x.export
-		.player2y_export                (<connected-to-player2y_export>),                //                player2y.export
-		.missile1_x_export              (<connected-to-missile1_x_export>),              //              missile1_x.export
-		.missile1_y_export              (<connected-to-missile1_y_export>),              //              missile1_y.export
-		.missile2_x_export              (<connected-to-missile2_x_export>),              //              missile2_x.export
-		.missile2_y_export              (<connected-to-missile2_y_export>),              //              missile2_y.export
-		.scorep1_export                 (<connected-to-scorep1_export>),                 //                 scorep1.export
-		.scorep2_export                 (<connected-to-scorep2_export>),                 //                 scorep2.export
-		.p1_hit_export                  (<connected-to-p1_hit_export>),                  //                  p1_hit.export
-		.p2_hit_export                  (<connected-to-p2_hit_export>)                   //                  p2_hit.export
+		.splashscreen_x_export          (<connected-to-splashscreen_x_export>),          //          splashscreen_x.export
+		.splashscreen_y_export          (<connected-to-splashscreen_y_export>)           //          splashscreen_y.export
 	);
 

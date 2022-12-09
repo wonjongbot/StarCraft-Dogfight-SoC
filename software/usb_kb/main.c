@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include "system.h"
 #include "altera_avalon_spi.h"
 #include "altera_avalon_spi_regs.h"
@@ -220,23 +221,111 @@ int isOnscreen(int x, int y){
 	return 1;
 }
 
-void update_missile(BOOT_KBD_REPORT kbdbuf, struct player* p, struct counters* pcounter, int shoot){
+void update_missile(BOOT_KBD_REPORT kbdbuf, struct player* p, struct counters* pcounter, int shoot, struct Game* g){
 	if(isPressed(kbdbuf, shoot) && isOnscreen(*(p->missile_x), *(p->missile_y)) == 0){
 		*(p->missile_x) = *(p->x_loc) + 16;
 		*(p->missile_y) = *(p->y_loc) + 16;
+		p->missile_state = 0;
+		p->missile_bounce = 0;
 	}
-	else if(isOnscreen(*(p->missile_x), *(p->missile_y)) && pcounter->missile_motion_counter == 2){
+	else if(pcounter->missile_motion_counter == 2 && p->missile_state == 0){
+		p->missile_x_prev = *(p->missile_x);
+		p->missile_y_prev = *(p->missile_y);
 		p->missile_motion_x = 2 * p->motion_x;
 		p->missile_motion_y = 2 * p->motion_y;
 		*(p->missile_x) += p->missile_motion_x;
 		*(p->missile_y) += p->missile_motion_y;
+		p->missile_motion_x_prev = p->missile_motion_x;
+		p->missile_motion_y_prev = p->missile_motion_y;
 		pcounter->missile_motion_counter = 0;
 	}
-	else if(isOnscreen(*(p->missile_x), *(p->missile_y)) == 0){
+	else if(pcounter->missile_motion_counter == 2 && p->missile_state == 1 && p->missile_bounce < BOUNCE_LIMIT){
+		if(*(p->missile_collision) == 1){
+			*(p->missile_x) = p->missile_x_prev;
+			*(p->missile_y) = p->missile_y_prev;
+			// left opening
+			if((*(p->missile_x) < 20 && *(p->missile_y) > 60 && *(p->missile_y) < 220)){
+				p->missile_motion_x = -(p->missile_motion_x_prev);
+				p->missile_motion_y = (p->missile_motion_y_prev);
+			}
+			//top opening
+			else if((*(p->missile_y) < 30 && *(p->missile_x) > 208 && *(p->missile_x) < 500)){
+				p->missile_motion_x = (p->missile_motion_x_prev);
+				p->missile_motion_y = -(p->missile_motion_y_prev);
+			}
+			//right opening
+			else if((*(p->missile_x) > 620 && *(p->missile_y) > 140 && *(p->missile_y) < 240)){
+				p->missile_motion_x = -(p->missile_motion_x_prev);
+				p->missile_motion_y = (p->missile_motion_y_prev);
+			}
+			//down opening
+			else if((*(p->missile_y) > 370 && *(p->missile_x) > 128 && *(p->missile_x) < 400)){
+				p->missile_motion_x = (p->missile_motion_x_prev);
+				p->missile_motion_y = -(p->missile_motion_y_prev);
+			}
+			else if((*(p->missile_x) > 320 && *(p->missile_y)> 220) || (*(p->missile_x) < 320 && *(p->missile_y)< 220)){
+				if(p->missile_motion_y == 0){
+					p->missile_motion_x = 0;
+					p->missile_motion_y = -(p->missile_motion_x_prev);
+				}
+				else if(p->missile_motion_x == 0){
+					p->missile_motion_x = -(p->missile_motion_y_prev);
+					p->missile_motion_y = 0;
+				}
+				else{
+					double theta;
+					if((p->missile_motion_x < 0 && p->missile_motion_y < 0) || (p->missile_motion_x < 0 && p->missile_motion_y > 0))
+						theta = (int)((atan(p->missile_motion_y / p->missile_motion_x) * 180 / M_PI) - 180 )% 360;
+					else
+						theta = atan(p->missile_motion_y / p->missile_motion_x) * 180 / M_PI;
+					double theta_ball = 90 - theta;
+					p->missile_motion_x = *(g->cos + (int)theta_ball) * -5;
+					p->missile_motion_y = *(g->sin + (int)theta_ball) * -5;
+				}
+			}
+			else{
+				if(p->missile_motion_y == 0){
+					p->missile_motion_x = 0;
+					p->missile_motion_y = (p->missile_motion_x_prev);
+				}
+				else if(p->missile_motion_x == 0){
+					p->missile_motion_x = (p->missile_motion_y_prev);
+					p->missile_motion_y = 0;
+				}
+				else{
+					double theta;
+					if((p->missile_motion_x < 0 && p->missile_motion_y < 0) || (p->missile_motion_x < 0 && p->missile_motion_y > 0))
+						theta = (int)((atan(p->missile_motion_y / p->missile_motion_x) * 180 / M_PI) - 180 )% 360;
+					else
+						theta = atan(p->missile_motion_y / p->missile_motion_x) * 180 / M_PI;
+					double theta_ball = 90 - theta;
+					p->missile_motion_x = *(g->cos + (int)theta_ball) * 5;
+					p->missile_motion_y = *(g->sin + (int)theta_ball) * 5;
+				}
+			}
+//			p->missile_motion_x = -1*(p->missile_motion_x_prev);
+//			p->missile_motion_y = -1*(p->missile_motion_y_prev);
+			*(p->missile_x) += p->missile_motion_x;
+			*(p->missile_y) += p->missile_motion_y;
+			(p->missile_motion_x_prev) = p->missile_motion_x;
+			(p->missile_motion_y_prev) = p->missile_motion_y;
+			p->missile_bounce += 1;
+		}
+		else{
+			p->missile_x_prev = *(p->missile_x);
+			p->missile_y_prev = *(p->missile_y);
+			*(p->missile_x) += p->missile_motion_x;
+			*(p->missile_y) += p->missile_motion_y;
+		}
+		pcounter->missile_motion_counter = 0;
+
+	}
+	else if(isOnscreen(*(p->missile_x), *(p->missile_y)) == 0 || p->missile_bounce == BOUNCE_LIMIT){
 		*(p->missile_x) = 700;
 		*(p->missile_y) = 700;
 		p->missile_motion_x = 0;
 		p->missile_motion_y = 0;
+		p->missile_state = 0;
 	}
 	if(pcounter->missile_motion_counter > 2)
 		pcounter->missile_motion_counter = 0;
@@ -300,7 +389,7 @@ void update_player(BOOT_KBD_REPORT kbdbuf, struct player* p, struct counters* pc
 		pcounter->motion_counter = 0;
 	}
 	else if(isPressed(kbdbuf, backward) && pcounter->motion_counter == PLAYER_MOTION_COUNTER){
-		if(*(p->collision) == 0 && p->collision_prev == 0){
+		if(*(p->collision) == 0){
 			p->x_loc_prev = *(p->x_loc);
 			p->y_loc_prev = *(p->y_loc);
 			*(p->x_loc) -= p->motion_x;
@@ -332,6 +421,12 @@ void update_player(BOOT_KBD_REPORT kbdbuf, struct player* p, struct counters* pc
 	}
 }
 
+void missileStatehandler(struct player* p){
+	if(*(p->missile_collision) == 1 && *(p->missile_x) != OUT_OF_SCREEN && *(p->missile_y) != OUT_OF_SCREEN){
+		p->missile_state = 1;
+
+	}
+}
 void update_ui_anim(struct Game* g, struct counters* pcounter){
 	g->ui_anim_enum_prev = *(g->ui_anim_enum);
 	if(pcounter->ui_anim_counter > UI_ANIM_COUNTER){
@@ -354,19 +449,68 @@ void updateScore(struct Game* g, int score1, int score2){
 	*(g->score_p2) = score2;
 }
 
-int isHit(struct Game* g){
+int isHit(struct Game* g, struct player* p1, struct player* p2){
 	if(*(g->hit_p1) && *(g->hit_p1) != g->hit_p1_prev)
 		return 1;
 	else if(*(g->hit_p2) && *(g->hit_p2) != g->hit_p2_prev)
 		return 2;
+	if(*(g->suicide_p1) && *(g->suicide_p1) != g->suicide_p1_prev && (p1->missile_bounce) > 0)
+		return -1;
+	else if(*(g->suicide_p2) && *(g->suicide_p2) != g->suicide_p2_prev && (p2->missile_bounce) > 0)
+		return -2;
 	else
 		return 0;
 }
 
+void playExplosion(struct Game* g){
+	if (*(g->explosion_enum) == 0){
+		for(int i = 0; i < 5; i++){
+			*(g->explosion_enum) = i;
+			for(int counter = 0; counter < 30000; counter++);
+		}
+	}
+	else
+		return;
+}
+
+// reset p1's location and p2's missile location
+void reset_player(struct player* p1, struct player* p2, int player_idx){
+	*(p1->missile_x) = 700;
+	*(p2->missile_x) = 700;
+	*(p1->missile_y) = 700;
+	*(p2->missile_y) = 700;
+	(p1->missile_motion_x) = 700;
+	(p2->missile_motion_x) = 700;
+	(p1->missile_motion_y) = 700;
+	(p2->missile_motion_y) = 700;
+	if(player_idx == 1){
+		*(p1->dir) = 0;
+		if(*(p2->x_loc) > 340)
+			p1->respawn_x = PLAYER1_START_X;
+		else
+			p1->respawn_x = PLAYER2_START_X;
+		if(*(p2->y_loc) < 220)
+			p1->respawn_y = PLAYER2_START_Y;
+		else
+			p1->respawn_y = PLAYER1_START_Y;
+	}
+	else{
+		*(p2->dir) = 0;
+		if((*(p1->x_loc)) > 340)
+			p2->respawn_x = PLAYER1_START_X;
+		else
+			p2->respawn_x = PLAYER2_START_X;
+		if((*(p1->y_loc)) < 220)
+			p2->respawn_y = PLAYER2_START_Y;
+		else
+			p2->respawn_y = PLAYER1_START_Y;
+	}
+}
 // game state enum
-enum game_state {HALT, INGAME, PLAYER1_SCORES, PLAYER1_WINS, PLAYER2_WINS};
+enum game_state {HALT, INGAME, PLAYER1_SCORES, PLAYER1_SUICIDE, PLAYER2_SCORES, PLAYER2_SUICIDE , PLAYER1_WINS, PLAYER2_WINS};
 
 int main() {
+	srand(0xECE385);
 	BYTE rcode;
 	BOOT_MOUSE_REPORT buf;		//USB mouse report
 	BOOT_KBD_REPORT kbdbuf;
@@ -376,44 +520,77 @@ int main() {
 	BYTE device;
 	//WORD keycode;
 
+	// initialize sin and cos array
+	double _sin[359];
+	double _cos[359];
+	for(int i = 0; i < 360; i++){
+		_sin[i] = sin(i*M_PI/180);
+		_cos[i] = cos(i*M_PI/180);
+	}
+
+	// possible spawn spots
+//	int SPAWN_X[2] = {145, 475};
+//	int SPAWN_Y[2] = {90, 305};
+
+	int P1colors[8] = {0xF60202, 0xFF0000, 0xFFfF00, 0xFFFF00, 0x00FF00, 0x0000FF, 0x00ffff, 0xff00ff};
+	int P2colors[8] = {0x81147E, 0xFF0000, 0xFFfF00, 0xFFFF00, 0x00FF00, 0x0000FF, 0x00ffff, 0xff00ff};
+
 	//initialize game struct
 	struct Game game;
 	game.ui_anim_enum = MARINE_ENUM_BASE; *(game.ui_anim_enum) = 0;
 	game.score_p1 = SCOREP1_BASE; *(game.score_p1) = 0x30;
 	game.score_p2 = SCOREP2_BASE; *(game.score_p2) = 0x30;
-	game.hit_p1 = P1_HIT_BASE; game.hit_p1_prev = *(game.hit_p1 = P1_HIT_BASE);
-	game.hit_p2 = P2_HIT_BASE; game.hit_p1_prev = *(game.hit_p2 = P2_HIT_BASE);
+	game.hit_p1 = P1_HIT_BASE; game.hit_p1_prev = *(game.hit_p1);
+	game.hit_p2 = P2_HIT_BASE; game.hit_p1_prev = *(game.hit_p2);
+	game.suicide_p1 = P1_SUICIDE_BASE; game.suicide_p1_prev = *(game.suicide_p1);
+	game.suicide_p2 = P2_SUICIDE_BASE; game.suicide_p2_prev = *(game.suicide_p1);
 	game.curr_game_state = HALT;
+	game.explosion_enum = EXPLOSION_ENUM_BASE; *(game.explosion_enum) = 1;
+	game.explosion_x = EXPLOSION_X_BASE; *(game.explosion_x) = OUT_OF_SCREEN;
+	game.explosion_y = EXPLOSION_Y_BASE; *(game.explosion_y) = OUT_OF_SCREEN;
+	game.sin = _sin;
+	game.cos = _cos;
+	game.splash_x = SPLASHSCREEN_X_BASE; *(game.splash_x) = SPLASH_X;
+	game.splash_y = SPLASHSCREEN_Y_BASE; *(game.splash_y) = SPLASH_Y;
 
 	struct Game* gptr = &game;
 
 	// Initialize player 1 struct
 	struct player player1;
-	player1.x_loc = PLAYER1X_BASE; *(player1.x_loc) = 50;
-	player1.y_loc = PLAYER1Y_BASE; *(player1.y_loc) = 240;
+	player1.respawn_x = PLAYER1_START_X;
+	player1.respawn_y = PLAYER1_START_Y;
+	player1.x_loc = PLAYER1X_BASE; *(player1.x_loc) = player1.respawn_x;
+	player1.y_loc = PLAYER1Y_BASE; *(player1.y_loc) = player1.respawn_y;
 	player1.x_loc_prev = *(player1.x_loc);
 	player1.y_loc_prev = *(player1.y_loc);
 	player1.motion_x = 0; player1.motion_y = 0;
 	player1.dir = SPRITE_ENUM_BASE; *(player1.dir) = 0;
 	player1.dir_prev = *(player1.dir);
 	player1.anim_enum = NULL;
-	player1.missile_x = MISSILE1_X_BASE; *(player1.missile_x) = 700;
-	player1.missile_y = MISSILE1_Y_BASE; *(player1.missile_y) = 700;
+	player1.missile_x = MISSILE1_X_BASE; *(player1.missile_x) = OUT_OF_SCREEN; player1.missile_x_prev = OUT_OF_SCREEN;
+	player1.missile_y = MISSILE1_Y_BASE; *(player1.missile_y) = OUT_OF_SCREEN; player1.missile_y_prev = OUT_OF_SCREEN;
 	player1.missile_motion_x = 0;
 	player1.missile_motion_y = 0;
 	player1.collision = COLLISIONP1_BASE;
 	player1.collision_prev = *(player1.collision);
+	player1.missile_collision = COLLISION_MS1_BASE;
+	player1.missile_collision_prev = *(player1.missile_collision);
 	player1.left = 0;
 	player1.left_prev = 0;
 	player1.right = 0;
 	player1.left_prev = 0;
+	player1.missile_state = 0;
+	player1.missile_bounce = 0;
+	player1.accent = P1_ACCENT_BASE; *(player1.accent) = 0xF60202;
 
 	struct player* p1ptr = &player1;
 
 	// initialize player 2 struct
 	struct player player2;
-	player2.x_loc = PLAYER2X_BASE; *(player2.x_loc) = 558;
-	player2.y_loc = PLAYER2Y_BASE; *(player2.y_loc) = 240;
+	player2.respawn_x = PLAYER2_START_X;
+	player2.respawn_y = PLAYER2_START_Y;
+	player2.x_loc = PLAYER2X_BASE; *(player2.x_loc) = player2.respawn_x;
+	player2.y_loc = PLAYER2Y_BASE; *(player2.y_loc) = player2.respawn_y;
 	player2.x_loc_prev = *(player2.x_loc);
 	player2.y_loc_prev = *(player2.y_loc);
 	player2.motion_x = 0;
@@ -421,16 +598,21 @@ int main() {
 	player2.dir = SPRITE_ENUM2_BASE;
 	player2.dir_prev = *(player2.dir); *(player2.dir) = 0;
 	player2.anim_enum = SPRITE2_ANIMATION_BASE; *(player2.anim_enum) = 0;
-	player2.missile_x = MISSILE2_X_BASE; *(player2.missile_x) = 700;
-	player2.missile_y = MISSILE2_Y_BASE; *(player2.missile_y) = 700;
+	player2.missile_x = MISSILE2_X_BASE; *(player2.missile_x) = OUT_OF_SCREEN; player2.missile_x_prev = OUT_OF_SCREEN;
+	player2.missile_y = MISSILE2_Y_BASE; *(player2.missile_y) = OUT_OF_SCREEN; player2.missile_y_prev = OUT_OF_SCREEN;
 	player2.missile_motion_x = 0;
 	player2.missile_motion_y = 0;
 	player2.collision = COLLISIONP2_BASE;
 	player2.collision_prev = *(player2.collision);
+	player2.missile_collision = COLLISION_MS2_BASE;
+	player2.missile_collision_prev = *(player2.missile_collision);
 	player2.left = 0;
 	player2.left_prev = 0;
 	player2.right = 0;
 	player2.right_prev = 0;
+	player2.missile_state = 0;
+	player2.missile_bounce = 0;
+	player2.accent = P2_ACCENT_BASE; *(player2.accent) = 0x81147E;
 
 	struct player* p2ptr = &player2;
 
@@ -471,8 +653,10 @@ int main() {
 		printSignedHex0(kbdbuf.keycode[0]);
 		printSignedHex1(kbdbuf.keycode[1]);
 		if(game.curr_game_state == HALT){
-			setLoc(p1ptr, 50, 240);
-			setLoc(p2ptr, 558, 240);
+			*(game.splash_x) = SPLASH_X;
+			*(game.splash_y) = SPLASH_Y;
+			setLoc(p1ptr, OUT_OF_SCREEN, OUT_OF_SCREEN);
+			setLoc(p2ptr, OUT_OF_SCREEN, OUT_OF_SCREEN);
 			// Reset values
 			*(player1.missile_x) = 700;
 			*(player2.missile_x) = 700;
@@ -486,44 +670,181 @@ int main() {
 			*(player1.dir) = 0;
 			updateScore(gptr, 0x56, 0x53);
 			if(*key == 1 && key_prev != 1){
+				*(game.splash_x) = OUT_OF_SCREEN;
+				*(game.splash_y) = OUT_OF_SCREEN;
 				game.curr_game_state = INGAME;
 				updateScore(gptr, 0x30, 0x30);
+				//set accent colors of characters
+				*(player1.accent) = P1colors[rand()%8];
+				*(player2.accent) = P2colors[rand()%8];
+				setLoc(p1ptr, player1.respawn_x, player1.respawn_y);
+				setLoc(p2ptr, player2.respawn_x, player2.respawn_y);
 			}
 		}
 		else if(game.curr_game_state == INGAME){
 			// player 1 movement logic
 			update_player(kbdbuf, p1ptr, p1cntptr, 04, 07, 26, 22);
-			update_missile(kbdbuf, p1ptr, p1cntptr, 44);
+			missileStatehandler(p1ptr);
+			update_missile(kbdbuf, p1ptr, p1cntptr, 44, gptr);
 
 			// player 2 movement logic
 			update_player(kbdbuf, p2ptr, p2cntptr, 80, 79, 82, 81);
-			update_missile(kbdbuf, p2ptr, p2cntptr, 56);
+			missileStatehandler(p2ptr);
+			update_missile(kbdbuf, p2ptr, p2cntptr, 56, gptr);
 
 			// update ui animation
 			update_ui_anim(gptr, p1cntptr);
 
 			// detect hits
-			if (isHit(gptr) == 1){
-				if(*(game.score_p2) == 0x39)
-					game.curr_game_state = PLAYER2_WINS;
-				else
-					updateScore(gptr, *(game.score_p1), *(game.score_p2) + 1);
+			if (isHit(gptr, p1ptr, p2ptr) == 1){
+				*(game.explosion_enum) = 0;
+				game.curr_game_state = PLAYER2_SCORES;
 			}
-			else if(isHit(gptr) == 2){
-				if(*(game.score_p1) == 0x39)
-					game.curr_game_state = PLAYER1_WINS;
-				else
-					updateScore(gptr, *(game.score_p1) + 1, *(game.score_p2));
+			else if(isHit(gptr, p1ptr, p2ptr) == 2){
+				*(game.explosion_enum) = 0;
+				game.curr_game_state = PLAYER1_SCORES;
+			}
+			else if(isHit(gptr, p1ptr, p2ptr) == -1){
+				*(game.explosion_enum) = 0;
+				game.curr_game_state = PLAYER1_SUICIDE;
+			}
+			else if(isHit(gptr, p1ptr, p2ptr) == -2){
+				*(game.explosion_enum) = 0;
+				game.curr_game_state = PLAYER2_SUICIDE;
 			}
 			game.hit_p1_prev = *(game.hit_p1);
 			game.hit_p2_prev = *(game.hit_p2);
+			game.suicide_p1_prev = *(game.suicide_p1);
+			game.suicide_p2_prev = *(game.suicide_p2);
+		}
+		else if(game.curr_game_state == PLAYER1_SCORES){
+			*(game.explosion_x) = *(player2.x_loc);
+			*(game.explosion_y) = *(player2.y_loc) + 4;
+			*(player2.x_loc) = OUT_OF_SCREEN;
+			*(player2.y_loc) = OUT_OF_SCREEN;
+			*(player2.missile_x) = OUT_OF_SCREEN;
+			*(player2.missile_y) = OUT_OF_SCREEN;
+			*(player1.missile_x) = OUT_OF_SCREEN;
+			*(player1.missile_y) = OUT_OF_SCREEN;
+			playExplosion(gptr);
+			if(*(game.score_p1)+ 1 + (int)(player1.missile_bounce > 0) >= 0x3a){
+				updateScore(gptr, 0x57, 0x4c);
+				game.next_game_state = PLAYER1_WINS;
+			}
+			else{
+				updateScore(gptr, *(game.score_p1) + 1 + (int)(player1.missile_bounce > 0), *(game.score_p2));
+				game.next_game_state = INGAME;
+			}
+			//while(*key != 1 || key_prev == 1);
+			reset_player(p1ptr, p2ptr, 2);
+			for(int i = 0; i < 5; i++){
+				*(player2.x_loc) = OUT_OF_SCREEN;
+				*(player2.y_loc) = OUT_OF_SCREEN;
+				for(int j = 0; j < 40000; j++);
+				*(player2.x_loc) = player2.respawn_x;
+				*(player2.y_loc) = player2.respawn_y;
+				for(int j = 0; j < 40000; j++);
+			}
+			*(game.explosion_x) = OUT_OF_SCREEN;
+			*(game.explosion_y) = OUT_OF_SCREEN;
+			game.curr_game_state = game.next_game_state;
+		}
+		else if(game.curr_game_state == PLAYER2_SUICIDE){
+			*(game.explosion_x) = *(player2.x_loc);
+			*(game.explosion_y) = *(player2.y_loc) + 4;
+			*(player2.x_loc) = OUT_OF_SCREEN;
+			*(player2.y_loc) = OUT_OF_SCREEN;
+			*(player2.missile_x) = OUT_OF_SCREEN;
+			*(player2.missile_y) = OUT_OF_SCREEN;
+			playExplosion(gptr);
+			if(*(game.score_p2)-1 <= 0x30){
+				updateScore(gptr, *(game.score_p1), 0x30);
+				game.next_game_state = INGAME;
+			}
+			else{
+				updateScore(gptr, *(game.score_p1), *(game.score_p2)-1);
+				game.next_game_state = INGAME;
+			}
+			reset_player(p1ptr, p2ptr, 2);
+			for(int i = 0; i < 5; i++){
+				*(player2.x_loc) = OUT_OF_SCREEN;
+				*(player2.y_loc) = OUT_OF_SCREEN;
+				for(int j = 0; j < 40000; j++);
+				*(player2.x_loc) =  player2.respawn_x;
+				*(player2.y_loc) =  player2.respawn_y;
+				for(int j = 0; j < 40000; j++);
+			}
+			*(game.explosion_x) = OUT_OF_SCREEN;
+			*(game.explosion_y) = OUT_OF_SCREEN;
+			game.curr_game_state = game.next_game_state;
+		}
+		else if(game.curr_game_state == PLAYER1_SUICIDE){
+			*(game.explosion_x) = *(player1.x_loc);
+			*(game.explosion_y) = *(player1.y_loc) + 4;
+			*(player1.x_loc) = OUT_OF_SCREEN;
+			*(player1.y_loc) = OUT_OF_SCREEN;
+			*(player1.missile_x) = OUT_OF_SCREEN;
+			*(player1.missile_y) = OUT_OF_SCREEN;
+			playExplosion(gptr);
+			if(*(game.score_p1)-1 <= 0x30){
+				updateScore(gptr, 0x30, *(game.score_p2));
+				game.next_game_state = INGAME;
+			}
+			else{
+				updateScore(gptr, *(game.score_p1) - 1, *(game.score_p2));
+				game.next_game_state = INGAME;
+			}
+			reset_player(p1ptr, p2ptr, 1);
+			for(int i = 0; i < 5; i++){
+				*(player1.x_loc) = OUT_OF_SCREEN;
+				*(player1.y_loc) = OUT_OF_SCREEN;
+				for(int j = 0; j < 40000; j++);
+				*(player1.x_loc) =  player1.respawn_x;
+				*(player1.y_loc) =  player1.respawn_y;
+				for(int j = 0; j < 40000; j++);
+			}
+			*(game.explosion_x) = OUT_OF_SCREEN;
+			*(game.explosion_y) = OUT_OF_SCREEN;
+			game.curr_game_state = game.next_game_state;
+		}
+		else if(game.curr_game_state == PLAYER2_SCORES){
+			*(game.explosion_x) = *(player1.x_loc);
+			*(game.explosion_y) = *(player1.y_loc) + 4;
+			*(player1.x_loc) = OUT_OF_SCREEN;
+			*(player1.y_loc) = OUT_OF_SCREEN;
+			*(player2.missile_x) = OUT_OF_SCREEN;
+			*(player2.missile_y) = OUT_OF_SCREEN;
+			*(player1.missile_x) = OUT_OF_SCREEN;
+			*(player1.missile_y) = OUT_OF_SCREEN;
+			playExplosion(gptr);
+			if(*(game.score_p2)+ 1 + (int)(player2.missile_bounce > 0) >= 0x3a){
+				updateScore(gptr, 0x4c, 0x57);
+				game.next_game_state = PLAYER2_WINS;
+			}
+			else{
+				updateScore(gptr, *(game.score_p1), *(game.score_p2) + 1+ (int)(player2.missile_bounce > 0));
+				game.next_game_state = INGAME;
+			}
+			//while(*key != 1 || key_prev == 1);
+			reset_player(p1ptr, p2ptr, 1);
+			for(int i = 0; i < 5; i++){
+				*(player1.x_loc) = OUT_OF_SCREEN;
+				*(player1.y_loc) = OUT_OF_SCREEN;
+				for(int j = 0; j < 40000; j++);
+				*(player1.x_loc) =  player1.respawn_x;
+				*(player1.y_loc) =  player1.respawn_y;
+				for(int j = 0; j < 40000; j++);
+			}
+			*(game.explosion_x) = OUT_OF_SCREEN;
+			*(game.explosion_y) = OUT_OF_SCREEN;
+			game.curr_game_state = game.next_game_state;
 		}
 		else if(game.curr_game_state == PLAYER1_WINS){
 			updateScore(gptr, 0x57, 0x4c);
 			if(*key == 1 && key_prev != 1){
 				updateScore(gptr, 0x30, 0x30);
-				setLoc(p1ptr, 50, 240);
-				setLoc(p2ptr, 558, 240);
+				setLoc(p1ptr, player1.respawn_x, player1.respawn_y);
+				setLoc(p2ptr, player2.respawn_x, player2.respawn_y);
 				// Reset values
 				*(player1.missile_x) = 700;
 				*(player2.missile_x) = 700;
@@ -542,8 +863,8 @@ int main() {
 			updateScore(gptr, 0x4c, 0x57);
 			if(*key == 1 && key_prev != 1){
 				updateScore(gptr, 0x30, 0x30);
-				setLoc(p1ptr, 50, 240);
-				setLoc(p2ptr, 558, 240);
+				setLoc(p1ptr, player1.respawn_x, player1.respawn_y);
+				setLoc(p2ptr, player2.respawn_x, player2.respawn_y);
 				// Reset values
 				*(player1.missile_x) = 700;
 				*(player2.missile_x) = 700;

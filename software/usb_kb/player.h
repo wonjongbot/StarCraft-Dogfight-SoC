@@ -12,6 +12,17 @@
 #define PLAYER_ANIM_COUNTER 45
 #define UI_ANIM_COUNTER 70
 #define PLAYER_MOTION_COUNTER 15
+#define OUT_OF_SCREEN 700
+
+#define PLAYER1_START_X 145
+#define PLAYER1_START_Y 90
+#define PLAYER2_START_X 475
+#define PLAYER2_START_Y 305
+#define BOUNCE_LIMIT 3
+
+#define SPLASH_X 193;
+#define SPLASH_Y 210;
+
 struct player
 {
 	int* x_loc;
@@ -25,14 +36,25 @@ struct player
 	int* anim_enum;
 	int* missile_x;
 	int* missile_y;
+	int missile_x_prev;
+	int missile_y_prev;
+	int missile_state;
 	int missile_motion_x;
 	int missile_motion_y;
+	int missile_motion_x_prev;
+	int missile_motion_y_prev;
 	int* collision;
 	int collision_prev;
+	int* missile_collision;
+	int missile_collision_prev;
 	int left;
 	int left_prev;
 	int right;
 	int right_prev;
+	int missile_bounce;
+	int* accent;
+	int respawn_x;
+	int respawn_y;
 };
 
 struct Game
@@ -45,7 +67,19 @@ struct Game
 	int hit_p1_prev;
 	int* hit_p2;
 	int hit_p2_prev;
+	int* suicide_p1;
+	int suicide_p1_prev;
+	int* suicide_p2;
+	int suicide_p2_prev;
 	int curr_game_state;
+	int next_game_state;
+	int* explosion_x;
+	int* explosion_y;
+	int* explosion_enum;
+	int* splash_x;
+	int* splash_y;
+	double* sin;
+	double* cos;
 };
 
 struct counters
@@ -55,6 +89,7 @@ struct counters
 	int motion_counter;
 	int sprite_anim_counter;
 	int missile_motion_counter;
+	int explosion_counter;
 };
 
 

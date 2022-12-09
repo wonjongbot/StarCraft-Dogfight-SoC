@@ -34,7 +34,7 @@
    {
       datum baseAddress
       {
-         value = "896";
+         value = "1248";
          type = "String";
       }
    }
@@ -50,7 +50,87 @@
    {
       datum baseAddress
       {
-         value = "864";
+         value = "1216";
+         type = "String";
+      }
+   }
+   element collision_ms1
+   {
+      datum _sortIndex
+      {
+         value = "39";
+         type = "int";
+      }
+   }
+   element collision_ms1.s1
+   {
+      datum baseAddress
+      {
+         value = "1024";
+         type = "String";
+      }
+   }
+   element collision_ms2
+   {
+      datum _sortIndex
+      {
+         value = "40";
+         type = "int";
+      }
+   }
+   element collision_ms2.s1
+   {
+      datum baseAddress
+      {
+         value = "1040";
+         type = "String";
+      }
+   }
+   element explosion_enum
+   {
+      datum _sortIndex
+      {
+         value = "43";
+         type = "int";
+      }
+   }
+   element explosion_enum.s1
+   {
+      datum baseAddress
+      {
+         value = "1008";
+         type = "String";
+      }
+   }
+   element explosion_x
+   {
+      datum _sortIndex
+      {
+         value = "41";
+         type = "int";
+      }
+   }
+   element explosion_x.s1
+   {
+      datum baseAddress
+      {
+         value = "976";
+         type = "String";
+      }
+   }
+   element explosion_y
+   {
+      datum _sortIndex
+      {
+         value = "42";
+         type = "int";
+      }
+   }
+   element explosion_y.s1
+   {
+      datum baseAddress
+      {
+         value = "992";
          type = "String";
       }
    }
@@ -66,7 +146,7 @@
    {
       datum baseAddress
       {
-         value = "1104";
+         value = "1456";
          type = "String";
       }
    }
@@ -87,7 +167,7 @@
       }
       datum baseAddress
       {
-         value = "1224";
+         value = "1576";
          type = "String";
       }
    }
@@ -119,7 +199,7 @@
    {
       datum baseAddress
       {
-         value = "1072";
+         value = "1424";
          type = "String";
       }
    }
@@ -135,7 +215,7 @@
    {
       datum baseAddress
       {
-         value = "1168";
+         value = "1520";
          type = "String";
       }
    }
@@ -151,7 +231,7 @@
    {
       datum baseAddress
       {
-         value = "992";
+         value = "1344";
          type = "String";
       }
    }
@@ -167,7 +247,7 @@
    {
       datum baseAddress
       {
-         value = "1008";
+         value = "1360";
          type = "String";
       }
    }
@@ -183,7 +263,7 @@
    {
       datum baseAddress
       {
-         value = "1024";
+         value = "1376";
          type = "String";
       }
    }
@@ -199,7 +279,7 @@
    {
       datum baseAddress
       {
-         value = "1040";
+         value = "1392";
          type = "String";
       }
    }
@@ -215,7 +295,7 @@
    {
       datum baseAddress
       {
-         value = "976";
+         value = "1328";
          type = "String";
       }
    }
@@ -231,7 +311,7 @@
    {
       datum baseAddress
       {
-         value = "1088";
+         value = "1440";
          type = "String";
       }
    }
@@ -247,7 +327,7 @@
    {
       datum baseAddress
       {
-         value = "944";
+         value = "1296";
          type = "String";
       }
    }
@@ -263,7 +343,7 @@
    {
       datum baseAddress
       {
-         value = "816";
+         value = "1168";
          type = "String";
       }
    }
@@ -279,7 +359,7 @@
    {
       datum baseAddress
       {
-         value = "800";
+         value = "1152";
          type = "String";
       }
    }
@@ -295,7 +375,7 @@
    {
       datum baseAddress
       {
-         value = "784";
+         value = "1136";
          type = "String";
       }
    }
@@ -311,7 +391,7 @@
    {
       datum baseAddress
       {
-         value = "768";
+         value = "1120";
          type = "String";
       }
    }
@@ -357,6 +437,22 @@
          type = "boolean";
       }
    }
+   element p1_accent
+   {
+      datum _sortIndex
+      {
+         value = "46";
+         type = "int";
+      }
+   }
+   element p1_accent.s1
+   {
+      datum baseAddress
+      {
+         value = "928";
+         type = "String";
+      }
+   }
    element p1_hit
    {
       datum _sortIndex
@@ -369,7 +465,39 @@
    {
       datum baseAddress
       {
-         value = "704";
+         value = "1056";
+         type = "String";
+      }
+   }
+   element p1_suicide
+   {
+      datum _sortIndex
+      {
+         value = "44";
+         type = "int";
+      }
+   }
+   element p1_suicide.s1
+   {
+      datum baseAddress
+      {
+         value = "960";
+         type = "String";
+      }
+   }
+   element p2_accent
+   {
+      datum _sortIndex
+      {
+         value = "47";
+         type = "int";
+      }
+   }
+   element p2_accent.s1
+   {
+      datum baseAddress
+      {
+         value = "912";
          type = "String";
       }
    }
@@ -385,7 +513,23 @@
    {
       datum baseAddress
       {
-         value = "720";
+         value = "1072";
+         type = "String";
+      }
+   }
+   element p2_suicide
+   {
+      datum _sortIndex
+      {
+         value = "45";
+         type = "int";
+      }
+   }
+   element p2_suicide.s1
+   {
+      datum baseAddress
+      {
+         value = "944";
          type = "String";
       }
    }
@@ -401,7 +545,7 @@
    {
       datum baseAddress
       {
-         value = "928";
+         value = "1280";
          type = "String";
       }
    }
@@ -417,7 +561,7 @@
    {
       datum baseAddress
       {
-         value = "912";
+         value = "1264";
          type = "String";
       }
    }
@@ -433,7 +577,7 @@
    {
       datum baseAddress
       {
-         value = "832";
+         value = "1184";
          type = "String";
       }
    }
@@ -449,7 +593,7 @@
    {
       datum baseAddress
       {
-         value = "848";
+         value = "1200";
          type = "String";
       }
    }
@@ -465,7 +609,7 @@
    {
       datum baseAddress
       {
-         value = "736";
+         value = "1088";
          type = "String";
       }
    }
@@ -481,7 +625,7 @@
    {
       datum baseAddress
       {
-         value = "752";
+         value = "1104";
          type = "String";
       }
    }
@@ -523,7 +667,7 @@
    {
       datum baseAddress
       {
-         value = "1184";
+         value = "1536";
          type = "String";
       }
    }
@@ -543,6 +687,38 @@
          type = "String";
       }
    }
+   element splashscreen_x
+   {
+      datum _sortIndex
+      {
+         value = "48";
+         type = "int";
+      }
+   }
+   element splashscreen_x.s1
+   {
+      datum baseAddress
+      {
+         value = "880";
+         type = "String";
+      }
+   }
+   element splashscreen_y
+   {
+      datum _sortIndex
+      {
+         value = "49";
+         type = "int";
+      }
+   }
+   element splashscreen_y.s1
+   {
+      datum baseAddress
+      {
+         value = "896";
+         type = "String";
+      }
+   }
    element sprite2_animation
    {
       datum _sortIndex
@@ -555,7 +731,7 @@
    {
       datum baseAddress
       {
-         value = "880";
+         value = "1232";
          type = "String";
       }
    }
@@ -571,7 +747,7 @@
    {
       datum baseAddress
       {
-         value = "1056";
+         value = "1408";
          type = "String";
       }
    }
@@ -587,7 +763,7 @@
    {
       datum baseAddress
       {
-         value = "960";
+         value = "1312";
          type = "String";
       }
    }
@@ -608,7 +784,7 @@
    {
       datum baseAddress
       {
-         value = "1216";
+         value = "1568";
          type = "String";
       }
    }
@@ -640,7 +816,7 @@
    {
       datum baseAddress
       {
-         value = "1136";
+         value = "1488";
          type = "String";
       }
    }
@@ -656,7 +832,7 @@
    {
       datum baseAddress
       {
-         value = "1152";
+         value = "1504";
          type = "String";
       }
    }
@@ -672,7 +848,7 @@
    {
       datum baseAddress
       {
-         value = "1120";
+         value = "1472";
          type = "String";
       }
    }
@@ -699,6 +875,16 @@
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface
+   name="collision_ms1"
+   internal="collision_ms1.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="collision_ms2"
+   internal="collision_ms2.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
    name="collisionp1"
    internal="collisionP1.external_connection"
    type="conduit"
@@ -706,6 +892,21 @@
  <interface
    name="collisionp2"
    internal="collisionP2.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="explosion_enum"
+   internal="explosion_enum.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="explosion_x"
+   internal="explosion_x.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="explosion_y"
+   internal="explosion_y.external_connection"
    type="conduit"
    dir="end" />
  <interface
@@ -779,13 +980,33 @@
    type="conduit"
    dir="end" />
  <interface
+   name="p1_accent"
+   internal="p1_accent.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
    name="p1_hit"
    internal="p1_hit.external_connection"
    type="conduit"
    dir="end" />
  <interface
+   name="p1_suicide"
+   internal="p1_suicide.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="p2_accent"
+   internal="p2_accent.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
    name="p2_hit"
    internal="p2_hit.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="p2_suicide"
+   internal="p2_suicide.external_connection"
    type="conduit"
    dir="end" />
  <interface
@@ -822,6 +1043,16 @@
  <interface name="sdram_clk" internal="sdram_pll.c1" type="clock" dir="start" />
  <interface name="sdram_wire" internal="sdram.wire" type="conduit" dir="end" />
  <interface name="spi0" internal="spi_0.external" type="conduit" dir="end" />
+ <interface
+   name="splashscreen_x"
+   internal="splashscreen_x.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="splashscreen_y"
+   internal="splashscreen_y.external_connection"
+   type="conduit"
+   dir="end" />
  <interface
    name="sprite2_animation"
    internal="sprite2_animation.external_connection"
@@ -893,6 +1124,96 @@
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="1" />
+ </module>
+ <module
+   name="collision_ms1"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+ </module>
+ <module
+   name="collision_ms2"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+ </module>
+ <module
+   name="explosion_enum"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="8" />
+ </module>
+ <module
+   name="explosion_x"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="10" />
+ </module>
+ <module
+   name="explosion_y"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="10" />
  </module>
  <module
    name="hex_digits_pio"
@@ -1141,7 +1462,7 @@
   <parameter name="dataAddrWidth" value="28" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x10' type='altera_avalon_onchip_memory2.s1' /><slave name='timer_0.s1' start='0x80' end='0xC0' type='altera_avalon_timer.s1' /><slave name='spi_0.spi_control_port' start='0xC0' end='0xE0' type='altera_avalon_spi.spi_control_port' /><slave name='p1_hit.s1' start='0x2C0' end='0x2D0' type='altera_avalon_pio.s1' /><slave name='p2_hit.s1' start='0x2D0' end='0x2E0' type='altera_avalon_pio.s1' /><slave name='scorep1.s1' start='0x2E0' end='0x2F0' type='altera_avalon_pio.s1' /><slave name='scorep2.s1' start='0x2F0' end='0x300' type='altera_avalon_pio.s1' /><slave name='missile2_y.s1' start='0x300' end='0x310' type='altera_avalon_pio.s1' /><slave name='missile2_x.s1' start='0x310' end='0x320' type='altera_avalon_pio.s1' /><slave name='missile1_y.s1' start='0x320' end='0x330' type='altera_avalon_pio.s1' /><slave name='missile1_x.s1' start='0x330' end='0x340' type='altera_avalon_pio.s1' /><slave name='player2x.s1' start='0x340' end='0x350' type='altera_avalon_pio.s1' /><slave name='player2y.s1' start='0x350' end='0x360' type='altera_avalon_pio.s1' /><slave name='collisionP2.s1' start='0x360' end='0x370' type='altera_avalon_pio.s1' /><slave name='sprite2_animation.s1' start='0x370' end='0x380' type='altera_avalon_pio.s1' /><slave name='collisionP1.s1' start='0x380' end='0x390' type='altera_avalon_pio.s1' /><slave name='player1y.s1' start='0x390' end='0x3A0' type='altera_avalon_pio.s1' /><slave name='player1x.s1' start='0x3A0' end='0x3B0' type='altera_avalon_pio.s1' /><slave name='marine_enum.s1' start='0x3B0' end='0x3C0' type='altera_avalon_pio.s1' /><slave name='sprite_enum2.s1' start='0x3C0' end='0x3D0' type='altera_avalon_pio.s1' /><slave name='keycode5.s1' start='0x3D0' end='0x3E0' type='altera_avalon_pio.s1' /><slave name='keycode1.s1' start='0x3E0' end='0x3F0' type='altera_avalon_pio.s1' /><slave name='keycode2.s1' start='0x3F0' end='0x400' type='altera_avalon_pio.s1' /><slave name='keycode3.s1' start='0x400' end='0x410' type='altera_avalon_pio.s1' /><slave name='keycode4.s1' start='0x410' end='0x420' type='altera_avalon_pio.s1' /><slave name='sprite_enum.s1' start='0x420' end='0x430' type='altera_avalon_pio.s1' /><slave name='key.s1' start='0x430' end='0x440' type='altera_avalon_pio.s1' /><slave name='leds_pio.s1' start='0x440' end='0x450' type='altera_avalon_pio.s1' /><slave name='hex_digits_pio.s1' start='0x450' end='0x460' type='altera_avalon_pio.s1' /><slave name='usb_rst.s1' start='0x460' end='0x470' type='altera_avalon_pio.s1' /><slave name='usb_gpx.s1' start='0x470' end='0x480' type='altera_avalon_pio.s1' /><slave name='usb_irq.s1' start='0x480' end='0x490' type='altera_avalon_pio.s1' /><slave name='keycode.s1' start='0x490' end='0x4A0' type='altera_avalon_pio.s1' /><slave name='sdram_pll.pll_slave' start='0x4A0' end='0x4B0' type='altpll.pll_slave' /><slave name='sysid_qsys_0.control_slave' start='0x4C0' end='0x4C8' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x4C8' end='0x4D0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x1000' end='0x1800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='sdram.s1' start='0x8000000' end='0xC000000' type='altera_avalon_new_sdram_controller.s1' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x10' type='altera_avalon_onchip_memory2.s1' /><slave name='timer_0.s1' start='0x80' end='0xC0' type='altera_avalon_timer.s1' /><slave name='spi_0.spi_control_port' start='0xC0' end='0xE0' type='altera_avalon_spi.spi_control_port' /><slave name='splashscreen_x.s1' start='0x370' end='0x380' type='altera_avalon_pio.s1' /><slave name='splashscreen_y.s1' start='0x380' end='0x390' type='altera_avalon_pio.s1' /><slave name='p2_accent.s1' start='0x390' end='0x3A0' type='altera_avalon_pio.s1' /><slave name='p1_accent.s1' start='0x3A0' end='0x3B0' type='altera_avalon_pio.s1' /><slave name='p2_suicide.s1' start='0x3B0' end='0x3C0' type='altera_avalon_pio.s1' /><slave name='p1_suicide.s1' start='0x3C0' end='0x3D0' type='altera_avalon_pio.s1' /><slave name='explosion_x.s1' start='0x3D0' end='0x3E0' type='altera_avalon_pio.s1' /><slave name='explosion_y.s1' start='0x3E0' end='0x3F0' type='altera_avalon_pio.s1' /><slave name='explosion_enum.s1' start='0x3F0' end='0x400' type='altera_avalon_pio.s1' /><slave name='collision_ms1.s1' start='0x400' end='0x410' type='altera_avalon_pio.s1' /><slave name='collision_ms2.s1' start='0x410' end='0x420' type='altera_avalon_pio.s1' /><slave name='p1_hit.s1' start='0x420' end='0x430' type='altera_avalon_pio.s1' /><slave name='p2_hit.s1' start='0x430' end='0x440' type='altera_avalon_pio.s1' /><slave name='scorep1.s1' start='0x440' end='0x450' type='altera_avalon_pio.s1' /><slave name='scorep2.s1' start='0x450' end='0x460' type='altera_avalon_pio.s1' /><slave name='missile2_y.s1' start='0x460' end='0x470' type='altera_avalon_pio.s1' /><slave name='missile2_x.s1' start='0x470' end='0x480' type='altera_avalon_pio.s1' /><slave name='missile1_y.s1' start='0x480' end='0x490' type='altera_avalon_pio.s1' /><slave name='missile1_x.s1' start='0x490' end='0x4A0' type='altera_avalon_pio.s1' /><slave name='player2x.s1' start='0x4A0' end='0x4B0' type='altera_avalon_pio.s1' /><slave name='player2y.s1' start='0x4B0' end='0x4C0' type='altera_avalon_pio.s1' /><slave name='collisionP2.s1' start='0x4C0' end='0x4D0' type='altera_avalon_pio.s1' /><slave name='sprite2_animation.s1' start='0x4D0' end='0x4E0' type='altera_avalon_pio.s1' /><slave name='collisionP1.s1' start='0x4E0' end='0x4F0' type='altera_avalon_pio.s1' /><slave name='player1y.s1' start='0x4F0' end='0x500' type='altera_avalon_pio.s1' /><slave name='player1x.s1' start='0x500' end='0x510' type='altera_avalon_pio.s1' /><slave name='marine_enum.s1' start='0x510' end='0x520' type='altera_avalon_pio.s1' /><slave name='sprite_enum2.s1' start='0x520' end='0x530' type='altera_avalon_pio.s1' /><slave name='keycode5.s1' start='0x530' end='0x540' type='altera_avalon_pio.s1' /><slave name='keycode1.s1' start='0x540' end='0x550' type='altera_avalon_pio.s1' /><slave name='keycode2.s1' start='0x550' end='0x560' type='altera_avalon_pio.s1' /><slave name='keycode3.s1' start='0x560' end='0x570' type='altera_avalon_pio.s1' /><slave name='keycode4.s1' start='0x570' end='0x580' type='altera_avalon_pio.s1' /><slave name='sprite_enum.s1' start='0x580' end='0x590' type='altera_avalon_pio.s1' /><slave name='key.s1' start='0x590' end='0x5A0' type='altera_avalon_pio.s1' /><slave name='leds_pio.s1' start='0x5A0' end='0x5B0' type='altera_avalon_pio.s1' /><slave name='hex_digits_pio.s1' start='0x5B0' end='0x5C0' type='altera_avalon_pio.s1' /><slave name='usb_rst.s1' start='0x5C0' end='0x5D0' type='altera_avalon_pio.s1' /><slave name='usb_gpx.s1' start='0x5D0' end='0x5E0' type='altera_avalon_pio.s1' /><slave name='usb_irq.s1' start='0x5E0' end='0x5F0' type='altera_avalon_pio.s1' /><slave name='keycode.s1' start='0x5F0' end='0x600' type='altera_avalon_pio.s1' /><slave name='sdram_pll.pll_slave' start='0x600' end='0x610' type='altpll.pll_slave' /><slave name='sysid_qsys_0.control_slave' start='0x620' end='0x628' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x628' end='0x630' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x1000' end='0x1800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='sdram.s1' start='0x8000000' end='0xC000000' type='altera_avalon_new_sdram_controller.s1' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -1180,7 +1501,7 @@
   <parameter name="icache_tagramBlockType" value="Automatic" />
   <parameter name="impl" value="Tiny" />
   <parameter name="instAddrWidth" value="28" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x10' type='altera_avalon_onchip_memory2.s1' /><slave name='timer_0.s1' start='0x80' end='0xC0' type='altera_avalon_timer.s1' /><slave name='spi_0.spi_control_port' start='0xC0' end='0xE0' type='altera_avalon_spi.spi_control_port' /><slave name='p1_hit.s1' start='0x2C0' end='0x2D0' type='altera_avalon_pio.s1' /><slave name='p2_hit.s1' start='0x2D0' end='0x2E0' type='altera_avalon_pio.s1' /><slave name='scorep1.s1' start='0x2E0' end='0x2F0' type='altera_avalon_pio.s1' /><slave name='scorep2.s1' start='0x2F0' end='0x300' type='altera_avalon_pio.s1' /><slave name='missile2_y.s1' start='0x300' end='0x310' type='altera_avalon_pio.s1' /><slave name='missile2_x.s1' start='0x310' end='0x320' type='altera_avalon_pio.s1' /><slave name='missile1_y.s1' start='0x320' end='0x330' type='altera_avalon_pio.s1' /><slave name='missile1_x.s1' start='0x330' end='0x340' type='altera_avalon_pio.s1' /><slave name='player2x.s1' start='0x340' end='0x350' type='altera_avalon_pio.s1' /><slave name='player2y.s1' start='0x350' end='0x360' type='altera_avalon_pio.s1' /><slave name='collisionP2.s1' start='0x360' end='0x370' type='altera_avalon_pio.s1' /><slave name='sprite2_animation.s1' start='0x370' end='0x380' type='altera_avalon_pio.s1' /><slave name='collisionP1.s1' start='0x380' end='0x390' type='altera_avalon_pio.s1' /><slave name='player1y.s1' start='0x390' end='0x3A0' type='altera_avalon_pio.s1' /><slave name='player1x.s1' start='0x3A0' end='0x3B0' type='altera_avalon_pio.s1' /><slave name='marine_enum.s1' start='0x3B0' end='0x3C0' type='altera_avalon_pio.s1' /><slave name='sprite_enum2.s1' start='0x3C0' end='0x3D0' type='altera_avalon_pio.s1' /><slave name='keycode5.s1' start='0x3D0' end='0x3E0' type='altera_avalon_pio.s1' /><slave name='keycode1.s1' start='0x3E0' end='0x3F0' type='altera_avalon_pio.s1' /><slave name='keycode2.s1' start='0x3F0' end='0x400' type='altera_avalon_pio.s1' /><slave name='keycode3.s1' start='0x400' end='0x410' type='altera_avalon_pio.s1' /><slave name='keycode4.s1' start='0x410' end='0x420' type='altera_avalon_pio.s1' /><slave name='sprite_enum.s1' start='0x420' end='0x430' type='altera_avalon_pio.s1' /><slave name='key.s1' start='0x430' end='0x440' type='altera_avalon_pio.s1' /><slave name='leds_pio.s1' start='0x440' end='0x450' type='altera_avalon_pio.s1' /><slave name='hex_digits_pio.s1' start='0x450' end='0x460' type='altera_avalon_pio.s1' /><slave name='usb_rst.s1' start='0x460' end='0x470' type='altera_avalon_pio.s1' /><slave name='usb_gpx.s1' start='0x470' end='0x480' type='altera_avalon_pio.s1' /><slave name='usb_irq.s1' start='0x480' end='0x490' type='altera_avalon_pio.s1' /><slave name='keycode.s1' start='0x490' end='0x4A0' type='altera_avalon_pio.s1' /><slave name='sdram_pll.pll_slave' start='0x4A0' end='0x4B0' type='altpll.pll_slave' /><slave name='sysid_qsys_0.control_slave' start='0x4C0' end='0x4C8' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x4C8' end='0x4D0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x1000' end='0x1800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='sdram.s1' start='0x8000000' end='0xC000000' type='altera_avalon_new_sdram_controller.s1' /></address-map>]]></parameter>
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x10' type='altera_avalon_onchip_memory2.s1' /><slave name='timer_0.s1' start='0x80' end='0xC0' type='altera_avalon_timer.s1' /><slave name='spi_0.spi_control_port' start='0xC0' end='0xE0' type='altera_avalon_spi.spi_control_port' /><slave name='splashscreen_x.s1' start='0x370' end='0x380' type='altera_avalon_pio.s1' /><slave name='splashscreen_y.s1' start='0x380' end='0x390' type='altera_avalon_pio.s1' /><slave name='p2_accent.s1' start='0x390' end='0x3A0' type='altera_avalon_pio.s1' /><slave name='p1_accent.s1' start='0x3A0' end='0x3B0' type='altera_avalon_pio.s1' /><slave name='p2_suicide.s1' start='0x3B0' end='0x3C0' type='altera_avalon_pio.s1' /><slave name='p1_suicide.s1' start='0x3C0' end='0x3D0' type='altera_avalon_pio.s1' /><slave name='explosion_x.s1' start='0x3D0' end='0x3E0' type='altera_avalon_pio.s1' /><slave name='explosion_y.s1' start='0x3E0' end='0x3F0' type='altera_avalon_pio.s1' /><slave name='explosion_enum.s1' start='0x3F0' end='0x400' type='altera_avalon_pio.s1' /><slave name='collision_ms1.s1' start='0x400' end='0x410' type='altera_avalon_pio.s1' /><slave name='collision_ms2.s1' start='0x410' end='0x420' type='altera_avalon_pio.s1' /><slave name='p1_hit.s1' start='0x420' end='0x430' type='altera_avalon_pio.s1' /><slave name='p2_hit.s1' start='0x430' end='0x440' type='altera_avalon_pio.s1' /><slave name='scorep1.s1' start='0x440' end='0x450' type='altera_avalon_pio.s1' /><slave name='scorep2.s1' start='0x450' end='0x460' type='altera_avalon_pio.s1' /><slave name='missile2_y.s1' start='0x460' end='0x470' type='altera_avalon_pio.s1' /><slave name='missile2_x.s1' start='0x470' end='0x480' type='altera_avalon_pio.s1' /><slave name='missile1_y.s1' start='0x480' end='0x490' type='altera_avalon_pio.s1' /><slave name='missile1_x.s1' start='0x490' end='0x4A0' type='altera_avalon_pio.s1' /><slave name='player2x.s1' start='0x4A0' end='0x4B0' type='altera_avalon_pio.s1' /><slave name='player2y.s1' start='0x4B0' end='0x4C0' type='altera_avalon_pio.s1' /><slave name='collisionP2.s1' start='0x4C0' end='0x4D0' type='altera_avalon_pio.s1' /><slave name='sprite2_animation.s1' start='0x4D0' end='0x4E0' type='altera_avalon_pio.s1' /><slave name='collisionP1.s1' start='0x4E0' end='0x4F0' type='altera_avalon_pio.s1' /><slave name='player1y.s1' start='0x4F0' end='0x500' type='altera_avalon_pio.s1' /><slave name='player1x.s1' start='0x500' end='0x510' type='altera_avalon_pio.s1' /><slave name='marine_enum.s1' start='0x510' end='0x520' type='altera_avalon_pio.s1' /><slave name='sprite_enum2.s1' start='0x520' end='0x530' type='altera_avalon_pio.s1' /><slave name='keycode5.s1' start='0x530' end='0x540' type='altera_avalon_pio.s1' /><slave name='keycode1.s1' start='0x540' end='0x550' type='altera_avalon_pio.s1' /><slave name='keycode2.s1' start='0x550' end='0x560' type='altera_avalon_pio.s1' /><slave name='keycode3.s1' start='0x560' end='0x570' type='altera_avalon_pio.s1' /><slave name='keycode4.s1' start='0x570' end='0x580' type='altera_avalon_pio.s1' /><slave name='sprite_enum.s1' start='0x580' end='0x590' type='altera_avalon_pio.s1' /><slave name='key.s1' start='0x590' end='0x5A0' type='altera_avalon_pio.s1' /><slave name='leds_pio.s1' start='0x5A0' end='0x5B0' type='altera_avalon_pio.s1' /><slave name='hex_digits_pio.s1' start='0x5B0' end='0x5C0' type='altera_avalon_pio.s1' /><slave name='usb_rst.s1' start='0x5C0' end='0x5D0' type='altera_avalon_pio.s1' /><slave name='usb_gpx.s1' start='0x5D0' end='0x5E0' type='altera_avalon_pio.s1' /><slave name='usb_irq.s1' start='0x5E0' end='0x5F0' type='altera_avalon_pio.s1' /><slave name='keycode.s1' start='0x5F0' end='0x600' type='altera_avalon_pio.s1' /><slave name='sdram_pll.pll_slave' start='0x600' end='0x610' type='altpll.pll_slave' /><slave name='sysid_qsys_0.control_slave' start='0x620' end='0x628' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x628' end='0x630' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x1000' end='0x1800' type='altera_nios2_gen2.debug_mem_slave' /><slave name='sdram.s1' start='0x8000000' end='0xC000000' type='altera_avalon_new_sdram_controller.s1' /></address-map>]]></parameter>
   <parameter name="instructionMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="instructionMasterHighPerformanceMapParam" value="" />
   <parameter name="instruction_master_high_performance_paddr_base" value="0" />
@@ -1331,6 +1652,20 @@
   <parameter name="useShallowMemBlocks" value="false" />
   <parameter name="writable" value="true" />
  </module>
+ <module name="p1_accent" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="24" />
+ </module>
  <module name="p1_hit" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -1345,7 +1680,49 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="1" />
  </module>
+ <module name="p1_suicide" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+ </module>
+ <module name="p2_accent" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="24" />
+ </module>
  <module name="p2_hit" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+ </module>
+ <module name="p2_suicide" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -1656,6 +2033,42 @@
   <parameter name="targetSlaveSelectToSClkDelay" value="0.0" />
  </module>
  <module
+   name="splashscreen_x"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="10" />
+ </module>
+ <module
+   name="splashscreen_y"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="10" />
+ </module>
+ <module
    name="sprite2_animation"
    kind="altera_avalon_pio"
    version="18.1"
@@ -1776,7 +2189,7 @@
    start="nios2_gen2_0.data_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04c8" />
+  <parameter name="baseAddress" value="0x0628" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1785,7 +2198,7 @@
    start="nios2_gen2_0.data_master"
    end="sysid_qsys_0.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04c0" />
+  <parameter name="baseAddress" value="0x0620" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1803,7 +2216,7 @@
    start="nios2_gen2_0.data_master"
    end="sdram_pll.pll_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04a0" />
+  <parameter name="baseAddress" value="0x0600" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1830,7 +2243,7 @@
    start="nios2_gen2_0.data_master"
    end="keycode.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0490" />
+  <parameter name="baseAddress" value="0x05f0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1839,7 +2252,7 @@
    start="nios2_gen2_0.data_master"
    end="usb_irq.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0480" />
+  <parameter name="baseAddress" value="0x05e0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1848,7 +2261,7 @@
    start="nios2_gen2_0.data_master"
    end="usb_gpx.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0470" />
+  <parameter name="baseAddress" value="0x05d0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1857,7 +2270,7 @@
    start="nios2_gen2_0.data_master"
    end="usb_rst.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0460" />
+  <parameter name="baseAddress" value="0x05c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1866,7 +2279,7 @@
    start="nios2_gen2_0.data_master"
    end="hex_digits_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0450" />
+  <parameter name="baseAddress" value="0x05b0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1875,7 +2288,7 @@
    start="nios2_gen2_0.data_master"
    end="leds_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0440" />
+  <parameter name="baseAddress" value="0x05a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1884,7 +2297,7 @@
    start="nios2_gen2_0.data_master"
    end="key.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0430" />
+  <parameter name="baseAddress" value="0x0590" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1902,7 +2315,7 @@
    start="nios2_gen2_0.data_master"
    end="sprite_enum.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0420" />
+  <parameter name="baseAddress" value="0x0580" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1911,7 +2324,7 @@
    start="nios2_gen2_0.data_master"
    end="keycode4.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0410" />
+  <parameter name="baseAddress" value="0x0570" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1920,7 +2333,7 @@
    start="nios2_gen2_0.data_master"
    end="keycode3.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0400" />
+  <parameter name="baseAddress" value="0x0560" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1929,7 +2342,7 @@
    start="nios2_gen2_0.data_master"
    end="keycode2.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x03f0" />
+  <parameter name="baseAddress" value="0x0550" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1938,7 +2351,7 @@
    start="nios2_gen2_0.data_master"
    end="keycode1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x03e0" />
+  <parameter name="baseAddress" value="0x0540" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1947,7 +2360,7 @@
    start="nios2_gen2_0.data_master"
    end="keycode5.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x03d0" />
+  <parameter name="baseAddress" value="0x0530" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1956,7 +2369,7 @@
    start="nios2_gen2_0.data_master"
    end="sprite_enum2.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x03c0" />
+  <parameter name="baseAddress" value="0x0520" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1965,7 +2378,7 @@
    start="nios2_gen2_0.data_master"
    end="marine_enum.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x03b0" />
+  <parameter name="baseAddress" value="0x0510" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1974,7 +2387,7 @@
    start="nios2_gen2_0.data_master"
    end="player1x.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x03a0" />
+  <parameter name="baseAddress" value="0x0500" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1983,7 +2396,7 @@
    start="nios2_gen2_0.data_master"
    end="player1y.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0390" />
+  <parameter name="baseAddress" value="0x04f0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1992,7 +2405,7 @@
    start="nios2_gen2_0.data_master"
    end="collisionP1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0380" />
+  <parameter name="baseAddress" value="0x04e0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2001,7 +2414,7 @@
    start="nios2_gen2_0.data_master"
    end="sprite2_animation.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0370" />
+  <parameter name="baseAddress" value="0x04d0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2010,7 +2423,7 @@
    start="nios2_gen2_0.data_master"
    end="collisionP2.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0360" />
+  <parameter name="baseAddress" value="0x04c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2019,7 +2432,7 @@
    start="nios2_gen2_0.data_master"
    end="player2y.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0350" />
+  <parameter name="baseAddress" value="0x04b0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2028,7 +2441,7 @@
    start="nios2_gen2_0.data_master"
    end="player2x.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0340" />
+  <parameter name="baseAddress" value="0x04a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2037,7 +2450,7 @@
    start="nios2_gen2_0.data_master"
    end="missile1_x.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0330" />
+  <parameter name="baseAddress" value="0x0490" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2046,7 +2459,7 @@
    start="nios2_gen2_0.data_master"
    end="missile1_y.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0320" />
+  <parameter name="baseAddress" value="0x0480" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2055,7 +2468,7 @@
    start="nios2_gen2_0.data_master"
    end="missile2_x.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0310" />
+  <parameter name="baseAddress" value="0x0470" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2064,7 +2477,7 @@
    start="nios2_gen2_0.data_master"
    end="missile2_y.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0300" />
+  <parameter name="baseAddress" value="0x0460" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2073,7 +2486,7 @@
    start="nios2_gen2_0.data_master"
    end="scorep2.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x02f0" />
+  <parameter name="baseAddress" value="0x0450" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2082,7 +2495,7 @@
    start="nios2_gen2_0.data_master"
    end="scorep1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x02e0" />
+  <parameter name="baseAddress" value="0x0440" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2091,7 +2504,7 @@
    start="nios2_gen2_0.data_master"
    end="p2_hit.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x02d0" />
+  <parameter name="baseAddress" value="0x0430" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2100,7 +2513,106 @@
    start="nios2_gen2_0.data_master"
    end="p1_hit.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x02c0" />
+  <parameter name="baseAddress" value="0x0420" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="collision_ms2.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0410" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="collision_ms1.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0400" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="explosion_enum.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x03f0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="explosion_y.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x03e0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="explosion_x.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x03d0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="p1_suicide.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x03c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="p2_suicide.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x03b0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="p1_accent.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x03a0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="p2_accent.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0390" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="splashscreen_y.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0380" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="splashscreen_x.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0370" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2118,7 +2630,7 @@
    start="nios2_gen2_0.instruction_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04c8" />
+  <parameter name="baseAddress" value="0x0628" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2127,7 +2639,7 @@
    start="nios2_gen2_0.instruction_master"
    end="sysid_qsys_0.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04c0" />
+  <parameter name="baseAddress" value="0x0620" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2145,7 +2657,7 @@
    start="nios2_gen2_0.instruction_master"
    end="sdram_pll.pll_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04a0" />
+  <parameter name="baseAddress" value="0x0600" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2172,7 +2684,7 @@
    start="nios2_gen2_0.instruction_master"
    end="keycode.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0490" />
+  <parameter name="baseAddress" value="0x05f0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2181,7 +2693,7 @@
    start="nios2_gen2_0.instruction_master"
    end="usb_irq.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0480" />
+  <parameter name="baseAddress" value="0x05e0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2190,7 +2702,7 @@
    start="nios2_gen2_0.instruction_master"
    end="usb_gpx.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0470" />
+  <parameter name="baseAddress" value="0x05d0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2199,7 +2711,7 @@
    start="nios2_gen2_0.instruction_master"
    end="usb_rst.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0460" />
+  <parameter name="baseAddress" value="0x05c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2208,7 +2720,7 @@
    start="nios2_gen2_0.instruction_master"
    end="hex_digits_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0450" />
+  <parameter name="baseAddress" value="0x05b0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2217,7 +2729,7 @@
    start="nios2_gen2_0.instruction_master"
    end="leds_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0440" />
+  <parameter name="baseAddress" value="0x05a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2226,7 +2738,7 @@
    start="nios2_gen2_0.instruction_master"
    end="key.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0430" />
+  <parameter name="baseAddress" value="0x0590" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2244,7 +2756,7 @@
    start="nios2_gen2_0.instruction_master"
    end="sprite_enum.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0420" />
+  <parameter name="baseAddress" value="0x0580" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2253,7 +2765,7 @@
    start="nios2_gen2_0.instruction_master"
    end="keycode4.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0410" />
+  <parameter name="baseAddress" value="0x0570" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2262,7 +2774,7 @@
    start="nios2_gen2_0.instruction_master"
    end="keycode3.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0400" />
+  <parameter name="baseAddress" value="0x0560" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2271,7 +2783,7 @@
    start="nios2_gen2_0.instruction_master"
    end="keycode2.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x03f0" />
+  <parameter name="baseAddress" value="0x0550" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2280,7 +2792,7 @@
    start="nios2_gen2_0.instruction_master"
    end="keycode1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x03e0" />
+  <parameter name="baseAddress" value="0x0540" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2289,7 +2801,7 @@
    start="nios2_gen2_0.instruction_master"
    end="keycode5.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x03d0" />
+  <parameter name="baseAddress" value="0x0530" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2298,7 +2810,7 @@
    start="nios2_gen2_0.instruction_master"
    end="sprite_enum2.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x03c0" />
+  <parameter name="baseAddress" value="0x0520" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2307,7 +2819,7 @@
    start="nios2_gen2_0.instruction_master"
    end="marine_enum.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x03b0" />
+  <parameter name="baseAddress" value="0x0510" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2316,7 +2828,7 @@
    start="nios2_gen2_0.instruction_master"
    end="player1x.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x03a0" />
+  <parameter name="baseAddress" value="0x0500" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2325,7 +2837,7 @@
    start="nios2_gen2_0.instruction_master"
    end="player1y.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0390" />
+  <parameter name="baseAddress" value="0x04f0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2334,7 +2846,7 @@
    start="nios2_gen2_0.instruction_master"
    end="collisionP1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0380" />
+  <parameter name="baseAddress" value="0x04e0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2343,7 +2855,7 @@
    start="nios2_gen2_0.instruction_master"
    end="sprite2_animation.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0370" />
+  <parameter name="baseAddress" value="0x04d0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2352,7 +2864,7 @@
    start="nios2_gen2_0.instruction_master"
    end="collisionP2.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0360" />
+  <parameter name="baseAddress" value="0x04c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2361,7 +2873,7 @@
    start="nios2_gen2_0.instruction_master"
    end="player2y.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0350" />
+  <parameter name="baseAddress" value="0x04b0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2370,7 +2882,7 @@
    start="nios2_gen2_0.instruction_master"
    end="player2x.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0340" />
+  <parameter name="baseAddress" value="0x04a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2379,7 +2891,7 @@
    start="nios2_gen2_0.instruction_master"
    end="missile1_x.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0330" />
+  <parameter name="baseAddress" value="0x0490" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2388,7 +2900,7 @@
    start="nios2_gen2_0.instruction_master"
    end="missile1_y.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0320" />
+  <parameter name="baseAddress" value="0x0480" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2397,7 +2909,7 @@
    start="nios2_gen2_0.instruction_master"
    end="missile2_x.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0310" />
+  <parameter name="baseAddress" value="0x0470" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2406,7 +2918,7 @@
    start="nios2_gen2_0.instruction_master"
    end="missile2_y.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0300" />
+  <parameter name="baseAddress" value="0x0460" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2415,7 +2927,7 @@
    start="nios2_gen2_0.instruction_master"
    end="scorep1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x02e0" />
+  <parameter name="baseAddress" value="0x0440" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2424,7 +2936,7 @@
    start="nios2_gen2_0.instruction_master"
    end="scorep2.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x02f0" />
+  <parameter name="baseAddress" value="0x0450" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2433,7 +2945,7 @@
    start="nios2_gen2_0.instruction_master"
    end="p1_hit.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x02c0" />
+  <parameter name="baseAddress" value="0x0420" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2442,7 +2954,106 @@
    start="nios2_gen2_0.instruction_master"
    end="p2_hit.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x02d0" />
+  <parameter name="baseAddress" value="0x0430" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.instruction_master"
+   end="collision_ms1.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0400" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.instruction_master"
+   end="collision_ms2.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0410" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.instruction_master"
+   end="explosion_enum.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x03f0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.instruction_master"
+   end="explosion_y.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x03e0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.instruction_master"
+   end="explosion_x.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x03d0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.instruction_master"
+   end="p1_suicide.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x03c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.instruction_master"
+   end="p2_suicide.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x03b0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.instruction_master"
+   end="p1_accent.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x03a0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.instruction_master"
+   end="p2_accent.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0390" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.instruction_master"
+   end="splashscreen_y.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0380" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.instruction_master"
+   end="splashscreen_x.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0370" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2498,6 +3109,29 @@
  <connection kind="clock" version="18.1" start="clk_0.clk" end="scorep2.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="p1_hit.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="p2_hit.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="collision_ms1.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="collision_ms2.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="explosion_x.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="explosion_y.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="explosion_enum.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="p1_suicide.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="p2_suicide.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="p1_accent.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="p2_accent.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="splashscreen_x.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="splashscreen_y.clk" />
  <connection
    kind="clock"
    version="18.1"
@@ -2706,6 +3340,61 @@
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
+   end="collision_ms2.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="collision_ms1.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="explosion_enum.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="explosion_y.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="explosion_x.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="p1_suicide.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="p2_suicide.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="p1_accent.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="p2_accent.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="splashscreen_y.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="splashscreen_x.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
    end="onchip_memory2_0.reset1" />
  <connection
    kind="reset"
@@ -2892,6 +3581,61 @@
    version="18.1"
    start="nios2_gen2_0.debug_reset_request"
    end="p2_hit.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="collision_ms2.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="collision_ms1.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="explosion_enum.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="explosion_y.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="explosion_x.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="p1_suicide.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="p2_suicide.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="p1_accent.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="p2_accent.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="splashscreen_y.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="splashscreen_x.reset" />
  <connection
    kind="reset"
    version="18.1"

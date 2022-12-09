@@ -13,10 +13,11 @@
 //    University of Illinois ECE Department                              --
 //-------------------------------------------------------------------------
 
-module  color_mapper ( input        [9:0] p1x, p1y, p2x, p2y, DrawX, DrawY, Ball_size, SW, ms1x, ms1y, ms2x, ms2y,
+module  color_mapper ( input        [9:0] p1x, p1y, p2x, p2y, DrawX, DrawY, Ball_size, SW, ms1x, ms1y, ms2x, ms2y, explosion_x, explosion_y, splashscreen_x, splashscreen_y,
 								input [7:0] scorep1, scorep2,
-								input [3:0] sprite_enum,sprite_enum2, ui_anim_enum,
+								input [3:0] sprite_enum,sprite_enum2, ui_anim_enum, explosion_enum,
 								input [2:0] sprite2_animation,
+								input [23:0] p1_accent, p2_accent,
 								input clk, blank,
                        output logic [7:0]  Red, Green, Blue );
     
@@ -81,6 +82,10 @@ module  color_mapper ( input        [9:0] p1x, p1y, p2x, p2y, DrawX, DrawY, Ball
 		logic [2:0] bkg_data;
 		frameROM_background rm3 (.read_address(bkg_addr), .data_Out(bkg_data), .Clk(clk));
 		
+		logic [14:0] splashscreen_addr;
+		logic [1:0] splashscreen_data;
+		splashscreen rm10 (.read_address(splashscreen_addr), .data_Out(splashscreen_data), .Clk(clk));
+		
 		logic [13:0] ui_addr;
 		logic [2:0] ui_data;
 		frameROM_UI rm5 (.read_address(ui_addr), .data_Out(ui_data), .Clk(clk)); 
@@ -100,6 +105,10 @@ module  color_mapper ( input        [9:0] p1x, p1y, p2x, p2y, DrawX, DrawY, Ball
 		logic [13:0] zerg_addr;
 		logic [2:0]zerg_data;
 		zerg_hud_sprite rm8 (.read_address(zerg_addr), .data_Out(zerg_data), .Clk(clk)); 
+
+		logic [12:0] explosion_addr;
+		logic [2:0] explosion_data;
+		explosion_sprite rm9 (.read_address(explosion_addr), .data_Out(explosion_data), .Clk(clk));
 		
 		assign shape_x = p1x;
 		assign shape_y = p1y;
@@ -107,7 +116,7 @@ module  color_mapper ( input        [9:0] p1x, p1y, p2x, p2y, DrawX, DrawY, Ball
 		logic [7:0] bkg_r, bkg_g, bkg_b;
 		logic [7:0] ui_r, ui_g, ui_b;
 		
-			
+
 		always_comb
 		begin:calculate_background_and_ui
 			bkg_addr = (DrawX >> 1) + (DrawY >> 1)*320;
@@ -217,7 +226,127 @@ module  color_mapper ( input        [9:0] p1x, p1y, p2x, p2y, DrawX, DrawY, Ball
 			endcase
 	
 		end
+// splashscreen logic
+	logic [7:0] splash_r, splash_g, splash_b;
+	logic splash_on;
+    always_comb
+    begin:splash_on_on_proc
+        if (DrawX >= splashscreen_x && DrawX < splashscreen_x + 247 &&
+				DrawY >= splashscreen_y && DrawY < splashscreen_y + 83)
+			begin
+				splash_on = 1'b1;
+				splashscreen_addr = ((DrawX-splashscreen_x) + ((DrawY-splashscreen_y)*247));
+				case(splashscreen_data)
+					3'h0:
+					begin
+						splash_r = bkg_r;
+						splash_g = bkg_g;
+						splash_b = bkg_b;
+					end
+					3'h1: 
+					begin
+						splash_r = 8'ha9;
+						splash_g = 8'hbc;
+						splash_b = 8'hcf;
+					end
+					3'h2: 
+					begin
+						splash_r = 8'h2a;
+						splash_g = 8'h5d;
+						splash_b = 8'h8d;
+					end
+					3'h3: 
+					begin
+						splash_r = 8'h75;
+						splash_g = 8'ha0;
+						splash_b = 8'hc8;
+					end
+					default: ;
+				endcase
+			end
+			else
+			begin
+				splash_on = 1'b0;
+				splashscreen_addr = 13'b0;
+				splash_r = bkg_r;
+				splash_g = bkg_g;
+				splash_b = bkg_b;
+			end
+     end
 		
+	logic [7:0] explosion_r, explosion_g, explosion_b;
+	logic explosion_on;
+    always_comb
+    begin:explosion_on_proc
+        if (DrawX >= explosion_x && DrawX < explosion_x + shape_size_x &&
+				DrawY >= explosion_y && DrawY < explosion_y + shape_size_y)
+			begin
+				explosion_on = 1'b1;
+				// palette_hex = ['0xff00ff', '0xfefdfa', '0xedce66', '0x923f15', '0x3d190e', '0x2a0402', '0x1d0000', '0x0d0101']
+				explosion_addr = ((DrawX-explosion_x) + ((DrawY-explosion_y)<<5) + (explosion_enum<<10));
+				case(explosion_data)
+					3'h0:
+					begin
+						explosion_r = bkg_r;
+						explosion_g = bkg_g;
+						explosion_b = bkg_b;
+					end
+					3'h1: //0xfefdfa
+					begin
+						explosion_r = 8'hfe;
+						explosion_g = 8'hfd;
+						explosion_b = 8'hfa;
+					end
+					3'h2: //0xedce66
+					begin
+						explosion_r = 8'hed;
+						explosion_g = 8'hce;
+						explosion_b = 8'h66;
+					end
+					3'h3: //0x923f15
+					begin
+						explosion_r = 8'h92;
+						explosion_g = 8'h3f;
+						explosion_b = 8'h15;
+					end	
+					3'h4: //0x3d190e
+					begin
+						explosion_r = 8'h3d;
+						explosion_g = 8'h19;
+						explosion_b = 8'h0e;
+					end
+					3'h5: //0x2a0402
+					begin 
+						explosion_r = 8'h2a;
+						explosion_g = 8'h04;
+						explosion_b = 8'h02;
+					end
+					3'h6: //0x1d0000
+					begin
+						explosion_r = 8'h1d;
+						explosion_g = 8'h00;
+						explosion_b = 8'h00;
+					end
+					3'h7: //0x0d0101
+					begin
+						explosion_r = 8'h0d;
+						explosion_g = 8'h01;
+						explosion_b = 8'h01;
+					end
+					default: ;
+				endcase
+			end
+			else
+			begin
+				explosion_on = 1'b0;
+				explosion_addr = 13'b0;
+				explosion_r = bkg_r;
+				explosion_g = bkg_g;
+				explosion_b = bkg_b;
+			end
+     end
+		
+
 	logic [7:0] sprite1_r, sprite1_g, sprite1_b;
     always_comb
     begin:sprite1_on_proc
@@ -282,9 +411,9 @@ module  color_mapper ( input        [9:0] p1x, p1y, p2x, p2y, DrawX, DrawY, Ball
 					end
 					3'h7: //0xF60202
 					begin
-						sprite1_r = 8'hF6;
-						sprite1_g = 8'h02;
-						sprite1_b = 8'h02;
+						sprite1_r = p1_accent[23:16];//8'hF6;
+						sprite1_g = p1_accent[15:8];//8'h02;
+						sprite1_b = p1_accent[7:0];//8'h02;
 					end
 					default: ;
 				endcase
@@ -556,9 +685,9 @@ module  color_mapper ( input        [9:0] p1x, p1y, p2x, p2y, DrawX, DrawY, Ball
 					end
 					3'h3: //0x81147E
 					begin
-						sprite2_r = 8'h81;
-						sprite2_g = 8'h14;
-						sprite2_b = 8'h7E;
+						sprite2_r = p2_accent[23:16];//8'h81;
+						sprite2_g = p2_accent[15:8];//8'h14;
+						sprite2_b = p2_accent[7:0];//8'h7E;
 					end	
 					3'h4: //0x95777C
 					begin
@@ -617,17 +746,29 @@ module  color_mapper ( input        [9:0] p1x, p1y, p2x, p2y, DrawX, DrawY, Ball
 			end
 			else
 			begin
-				if ((ball1_on == 1'b1)) 
+				if ((splash_on == 1'b1))
+				begin
+					R_next = splash_r;
+					G_next = splash_g;
+					B_next = splash_b;
+				end
+				else if ((explosion_on == 1'b1))
+				begin
+					R_next = explosion_r;
+					G_next = explosion_g;
+					B_next = explosion_b;
+				end
+				else if ((ball1_on == 1'b1)) 
 				begin 
-					R_next = 8'hff;
-					G_next = 8'h55;
-					B_next = 8'h00;
+					R_next = p1_accent[23:16];
+					G_next = p1_accent[15:8];
+					B_next = p1_accent[7:0];
 				end
 				else if ((ball2_on == 1'b1)) 
 				begin 
-					R_next = 8'h55;
-					G_next = 8'hff;
-					B_next = 8'h00;
+					R_next = p2_accent[23:16];
+					G_next = p2_accent[15:8];
+					B_next = p2_accent[7:0];
 				end
 				else if ((score1_on == 1'b1) && score1_data[7 - ((DrawX-268)>>2)] == 1'b1)
 				begin

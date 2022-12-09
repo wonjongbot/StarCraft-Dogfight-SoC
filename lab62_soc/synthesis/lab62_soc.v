@@ -5,8 +5,13 @@
 `timescale 1 ps / 1 ps
 module lab62_soc (
 		input  wire        clk_clk,                        //                     clk.clk
+		input  wire        collision_ms1_export,           //           collision_ms1.export
+		input  wire        collision_ms2_export,           //           collision_ms2.export
 		input  wire        collisionp1_export,             //             collisionp1.export
 		input  wire        collisionp2_export,             //             collisionp2.export
+		output wire [7:0]  explosion_enum_export,          //          explosion_enum.export
+		output wire [9:0]  explosion_x_export,             //             explosion_x.export
+		output wire [9:0]  explosion_y_export,             //             explosion_y.export
 		output wire [15:0] hex_digits_export,              //              hex_digits.export
 		input  wire [1:0]  key_external_connection_export, // key_external_connection.export
 		output wire [7:0]  keycode_export,                 //                 keycode.export
@@ -21,8 +26,12 @@ module lab62_soc (
 		output wire [9:0]  missile1_y_export,              //              missile1_y.export
 		output wire [9:0]  missile2_x_export,              //              missile2_x.export
 		output wire [9:0]  missile2_y_export,              //              missile2_y.export
+		output wire [23:0] p1_accent_export,               //               p1_accent.export
 		input  wire        p1_hit_export,                  //                  p1_hit.export
+		input  wire        p1_suicide_export,              //              p1_suicide.export
+		output wire [23:0] p2_accent_export,               //               p2_accent.export
 		input  wire        p2_hit_export,                  //                  p2_hit.export
+		input  wire        p2_suicide_export,              //              p2_suicide.export
 		output wire [9:0]  player1x_export,                //                player1x.export
 		output wire [9:0]  player1y_export,                //                player1y.export
 		output wire [9:0]  player2x_export,                //                player2x.export
@@ -44,6 +53,8 @@ module lab62_soc (
 		output wire        spi0_MOSI,                      //                        .MOSI
 		output wire        spi0_SCLK,                      //                        .SCLK
 		output wire        spi0_SS_n,                      //                        .SS_n
+		output wire [9:0]  splashscreen_x_export,          //          splashscreen_x.export
+		output wire [9:0]  splashscreen_y_export,          //          splashscreen_y.export
 		output wire [2:0]  sprite2_animation_export,       //       sprite2_animation.export
 		output wire [7:0]  sprite_enum2_extern_export,     //     sprite_enum2_extern.export
 		output wire [7:0]  sprite_enum_extern_export,      //      sprite_enum_extern.export
@@ -237,6 +248,49 @@ module lab62_soc (
 	wire   [1:0] mm_interconnect_0_p2_hit_s1_address;                         // mm_interconnect_0:p2_hit_s1_address -> p2_hit:address
 	wire  [31:0] mm_interconnect_0_p1_hit_s1_readdata;                        // p1_hit:readdata -> mm_interconnect_0:p1_hit_s1_readdata
 	wire   [1:0] mm_interconnect_0_p1_hit_s1_address;                         // mm_interconnect_0:p1_hit_s1_address -> p1_hit:address
+	wire  [31:0] mm_interconnect_0_collision_ms2_s1_readdata;                 // collision_ms2:readdata -> mm_interconnect_0:collision_ms2_s1_readdata
+	wire   [1:0] mm_interconnect_0_collision_ms2_s1_address;                  // mm_interconnect_0:collision_ms2_s1_address -> collision_ms2:address
+	wire  [31:0] mm_interconnect_0_collision_ms1_s1_readdata;                 // collision_ms1:readdata -> mm_interconnect_0:collision_ms1_s1_readdata
+	wire   [1:0] mm_interconnect_0_collision_ms1_s1_address;                  // mm_interconnect_0:collision_ms1_s1_address -> collision_ms1:address
+	wire         mm_interconnect_0_explosion_enum_s1_chipselect;              // mm_interconnect_0:explosion_enum_s1_chipselect -> explosion_enum:chipselect
+	wire  [31:0] mm_interconnect_0_explosion_enum_s1_readdata;                // explosion_enum:readdata -> mm_interconnect_0:explosion_enum_s1_readdata
+	wire   [1:0] mm_interconnect_0_explosion_enum_s1_address;                 // mm_interconnect_0:explosion_enum_s1_address -> explosion_enum:address
+	wire         mm_interconnect_0_explosion_enum_s1_write;                   // mm_interconnect_0:explosion_enum_s1_write -> explosion_enum:write_n
+	wire  [31:0] mm_interconnect_0_explosion_enum_s1_writedata;               // mm_interconnect_0:explosion_enum_s1_writedata -> explosion_enum:writedata
+	wire         mm_interconnect_0_explosion_y_s1_chipselect;                 // mm_interconnect_0:explosion_y_s1_chipselect -> explosion_y:chipselect
+	wire  [31:0] mm_interconnect_0_explosion_y_s1_readdata;                   // explosion_y:readdata -> mm_interconnect_0:explosion_y_s1_readdata
+	wire   [1:0] mm_interconnect_0_explosion_y_s1_address;                    // mm_interconnect_0:explosion_y_s1_address -> explosion_y:address
+	wire         mm_interconnect_0_explosion_y_s1_write;                      // mm_interconnect_0:explosion_y_s1_write -> explosion_y:write_n
+	wire  [31:0] mm_interconnect_0_explosion_y_s1_writedata;                  // mm_interconnect_0:explosion_y_s1_writedata -> explosion_y:writedata
+	wire         mm_interconnect_0_explosion_x_s1_chipselect;                 // mm_interconnect_0:explosion_x_s1_chipselect -> explosion_x:chipselect
+	wire  [31:0] mm_interconnect_0_explosion_x_s1_readdata;                   // explosion_x:readdata -> mm_interconnect_0:explosion_x_s1_readdata
+	wire   [1:0] mm_interconnect_0_explosion_x_s1_address;                    // mm_interconnect_0:explosion_x_s1_address -> explosion_x:address
+	wire         mm_interconnect_0_explosion_x_s1_write;                      // mm_interconnect_0:explosion_x_s1_write -> explosion_x:write_n
+	wire  [31:0] mm_interconnect_0_explosion_x_s1_writedata;                  // mm_interconnect_0:explosion_x_s1_writedata -> explosion_x:writedata
+	wire  [31:0] mm_interconnect_0_p1_suicide_s1_readdata;                    // p1_suicide:readdata -> mm_interconnect_0:p1_suicide_s1_readdata
+	wire   [1:0] mm_interconnect_0_p1_suicide_s1_address;                     // mm_interconnect_0:p1_suicide_s1_address -> p1_suicide:address
+	wire  [31:0] mm_interconnect_0_p2_suicide_s1_readdata;                    // p2_suicide:readdata -> mm_interconnect_0:p2_suicide_s1_readdata
+	wire   [1:0] mm_interconnect_0_p2_suicide_s1_address;                     // mm_interconnect_0:p2_suicide_s1_address -> p2_suicide:address
+	wire         mm_interconnect_0_p1_accent_s1_chipselect;                   // mm_interconnect_0:p1_accent_s1_chipselect -> p1_accent:chipselect
+	wire  [31:0] mm_interconnect_0_p1_accent_s1_readdata;                     // p1_accent:readdata -> mm_interconnect_0:p1_accent_s1_readdata
+	wire   [1:0] mm_interconnect_0_p1_accent_s1_address;                      // mm_interconnect_0:p1_accent_s1_address -> p1_accent:address
+	wire         mm_interconnect_0_p1_accent_s1_write;                        // mm_interconnect_0:p1_accent_s1_write -> p1_accent:write_n
+	wire  [31:0] mm_interconnect_0_p1_accent_s1_writedata;                    // mm_interconnect_0:p1_accent_s1_writedata -> p1_accent:writedata
+	wire         mm_interconnect_0_p2_accent_s1_chipselect;                   // mm_interconnect_0:p2_accent_s1_chipselect -> p2_accent:chipselect
+	wire  [31:0] mm_interconnect_0_p2_accent_s1_readdata;                     // p2_accent:readdata -> mm_interconnect_0:p2_accent_s1_readdata
+	wire   [1:0] mm_interconnect_0_p2_accent_s1_address;                      // mm_interconnect_0:p2_accent_s1_address -> p2_accent:address
+	wire         mm_interconnect_0_p2_accent_s1_write;                        // mm_interconnect_0:p2_accent_s1_write -> p2_accent:write_n
+	wire  [31:0] mm_interconnect_0_p2_accent_s1_writedata;                    // mm_interconnect_0:p2_accent_s1_writedata -> p2_accent:writedata
+	wire         mm_interconnect_0_splashscreen_y_s1_chipselect;              // mm_interconnect_0:splashscreen_y_s1_chipselect -> splashscreen_y:chipselect
+	wire  [31:0] mm_interconnect_0_splashscreen_y_s1_readdata;                // splashscreen_y:readdata -> mm_interconnect_0:splashscreen_y_s1_readdata
+	wire   [1:0] mm_interconnect_0_splashscreen_y_s1_address;                 // mm_interconnect_0:splashscreen_y_s1_address -> splashscreen_y:address
+	wire         mm_interconnect_0_splashscreen_y_s1_write;                   // mm_interconnect_0:splashscreen_y_s1_write -> splashscreen_y:write_n
+	wire  [31:0] mm_interconnect_0_splashscreen_y_s1_writedata;               // mm_interconnect_0:splashscreen_y_s1_writedata -> splashscreen_y:writedata
+	wire         mm_interconnect_0_splashscreen_x_s1_chipselect;              // mm_interconnect_0:splashscreen_x_s1_chipselect -> splashscreen_x:chipselect
+	wire  [31:0] mm_interconnect_0_splashscreen_x_s1_readdata;                // splashscreen_x:readdata -> mm_interconnect_0:splashscreen_x_s1_readdata
+	wire   [1:0] mm_interconnect_0_splashscreen_x_s1_address;                 // mm_interconnect_0:splashscreen_x_s1_address -> splashscreen_x:address
+	wire         mm_interconnect_0_splashscreen_x_s1_write;                   // mm_interconnect_0:splashscreen_x_s1_write -> splashscreen_x:write_n
+	wire  [31:0] mm_interconnect_0_splashscreen_x_s1_writedata;               // mm_interconnect_0:splashscreen_x_s1_writedata -> splashscreen_x:writedata
 	wire         mm_interconnect_0_spi_0_spi_control_port_chipselect;         // mm_interconnect_0:spi_0_spi_control_port_chipselect -> spi_0:spi_select
 	wire  [15:0] mm_interconnect_0_spi_0_spi_control_port_readdata;           // spi_0:data_to_cpu -> mm_interconnect_0:spi_0_spi_control_port_readdata
 	wire   [2:0] mm_interconnect_0_spi_0_spi_control_port_address;            // mm_interconnect_0:spi_0_spi_control_port_address -> spi_0:mem_addr
@@ -247,7 +301,7 @@ module lab62_soc (
 	wire         irq_mapper_receiver1_irq;                                    // timer_0:irq -> irq_mapper:receiver1_irq
 	wire         irq_mapper_receiver2_irq;                                    // spi_0:irq -> irq_mapper:receiver2_irq
 	wire  [31:0] nios2_gen2_0_irq_irq;                                        // irq_mapper:sender_irq -> nios2_gen2_0:irq
-	wire         rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [collisionP1:reset_n, collisionP2:reset_n, hex_digits_pio:reset_n, irq_mapper:reset, jtag_uart_0:rst_n, key:reset_n, keycode1:reset_n, keycode2:reset_n, keycode3:reset_n, keycode4:reset_n, keycode5:reset_n, keycode:reset_n, leds_pio:reset_n, marine_enum:reset_n, missile1_x:reset_n, missile1_y:reset_n, missile2_x:reset_n, missile2_y:reset_n, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n, onchip_memory2_0:reset, p1_hit:reset_n, p2_hit:reset_n, player1x:reset_n, player1y:reset_n, player2x:reset_n, player2y:reset_n, rst_translator:in_reset, scorep1:reset_n, scorep2:reset_n, sdram_pll:reset, spi_0:reset_n, sprite2_animation:reset_n, sprite_enum2:reset_n, sprite_enum:reset_n, sysid_qsys_0:reset_n, timer_0:reset_n, usb_gpx:reset_n, usb_irq:reset_n, usb_rst:reset_n]
+	wire         rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [collisionP1:reset_n, collisionP2:reset_n, collision_ms1:reset_n, collision_ms2:reset_n, explosion_enum:reset_n, explosion_x:reset_n, explosion_y:reset_n, hex_digits_pio:reset_n, irq_mapper:reset, jtag_uart_0:rst_n, key:reset_n, keycode1:reset_n, keycode2:reset_n, keycode3:reset_n, keycode4:reset_n, keycode5:reset_n, keycode:reset_n, leds_pio:reset_n, marine_enum:reset_n, missile1_x:reset_n, missile1_y:reset_n, missile2_x:reset_n, missile2_y:reset_n, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n, onchip_memory2_0:reset, p1_accent:reset_n, p1_hit:reset_n, p1_suicide:reset_n, p2_accent:reset_n, p2_hit:reset_n, p2_suicide:reset_n, player1x:reset_n, player1y:reset_n, player2x:reset_n, player2y:reset_n, rst_translator:in_reset, scorep1:reset_n, scorep2:reset_n, sdram_pll:reset, spi_0:reset_n, splashscreen_x:reset_n, splashscreen_y:reset_n, sprite2_animation:reset_n, sprite_enum2:reset_n, sprite_enum:reset_n, sysid_qsys_0:reset_n, timer_0:reset_n, usb_gpx:reset_n, usb_irq:reset_n, usb_rst:reset_n]
 	wire         rst_controller_reset_out_reset_req;                          // rst_controller:reset_req -> [nios2_gen2_0:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
 	wire         nios2_gen2_0_debug_reset_request_reset;                      // nios2_gen2_0:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1]
 	wire         rst_controller_001_reset_out_reset;                          // rst_controller_001:reset_out -> [mm_interconnect_0:sdram_reset_reset_bridge_in_reset_reset, sdram:reset_n]
@@ -266,6 +320,55 @@ module lab62_soc (
 		.address  (mm_interconnect_0_collisionp2_s1_address),  //                  s1.address
 		.readdata (mm_interconnect_0_collisionp2_s1_readdata), //                    .readdata
 		.in_port  (collisionp2_export)                         // external_connection.export
+	);
+
+	lab62_soc_collisionP1 collision_ms1 (
+		.clk      (clk_clk),                                     //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),             //               reset.reset_n
+		.address  (mm_interconnect_0_collision_ms1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_collision_ms1_s1_readdata), //                    .readdata
+		.in_port  (collision_ms1_export)                         // external_connection.export
+	);
+
+	lab62_soc_collisionP1 collision_ms2 (
+		.clk      (clk_clk),                                     //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),             //               reset.reset_n
+		.address  (mm_interconnect_0_collision_ms2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_collision_ms2_s1_readdata), //                    .readdata
+		.in_port  (collision_ms2_export)                         // external_connection.export
+	);
+
+	lab62_soc_explosion_enum explosion_enum (
+		.clk        (clk_clk),                                        //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address    (mm_interconnect_0_explosion_enum_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_explosion_enum_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_explosion_enum_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_explosion_enum_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_explosion_enum_s1_readdata),   //                    .readdata
+		.out_port   (explosion_enum_export)                           // external_connection.export
+	);
+
+	lab62_soc_explosion_x explosion_x (
+		.clk        (clk_clk),                                     //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),             //               reset.reset_n
+		.address    (mm_interconnect_0_explosion_x_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_explosion_x_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_explosion_x_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_explosion_x_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_explosion_x_s1_readdata),   //                    .readdata
+		.out_port   (explosion_x_export)                           // external_connection.export
+	);
+
+	lab62_soc_explosion_x explosion_y (
+		.clk        (clk_clk),                                     //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),             //               reset.reset_n
+		.address    (mm_interconnect_0_explosion_y_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_explosion_y_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_explosion_y_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_explosion_y_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_explosion_y_s1_readdata),   //                    .readdata
+		.out_port   (explosion_y_export)                           // external_connection.export
 	);
 
 	lab62_soc_hex_digits_pio hex_digits_pio (
@@ -300,7 +403,7 @@ module lab62_soc (
 		.in_port  (key_external_connection_export)     // external_connection.export
 	);
 
-	lab62_soc_keycode keycode (
+	lab62_soc_explosion_enum keycode (
 		.clk        (clk_clk),                                 //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),         //               reset.reset_n
 		.address    (mm_interconnect_0_keycode_s1_address),    //                  s1.address
@@ -311,7 +414,7 @@ module lab62_soc (
 		.out_port   (keycode_export)                           // external_connection.export
 	);
 
-	lab62_soc_keycode keycode1 (
+	lab62_soc_explosion_enum keycode1 (
 		.clk        (clk_clk),                                  //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),          //               reset.reset_n
 		.address    (mm_interconnect_0_keycode1_s1_address),    //                  s1.address
@@ -344,7 +447,7 @@ module lab62_soc (
 		.out_port   (keycode3_export)                           // external_connection.export
 	);
 
-	lab62_soc_keycode keycode4 (
+	lab62_soc_explosion_enum keycode4 (
 		.clk        (clk_clk),                                  //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),          //               reset.reset_n
 		.address    (mm_interconnect_0_keycode4_s1_address),    //                  s1.address
@@ -355,7 +458,7 @@ module lab62_soc (
 		.out_port   (keycode4_export)                           // external_connection.export
 	);
 
-	lab62_soc_keycode keycode5 (
+	lab62_soc_explosion_enum keycode5 (
 		.clk        (clk_clk),                                  //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),          //               reset.reset_n
 		.address    (mm_interconnect_0_keycode5_s1_address),    //                  s1.address
@@ -377,7 +480,7 @@ module lab62_soc (
 		.out_port   (leds_export)                               // external_connection.export
 	);
 
-	lab62_soc_keycode marine_enum (
+	lab62_soc_explosion_enum marine_enum (
 		.clk        (clk_clk),                                     //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),             //               reset.reset_n
 		.address    (mm_interconnect_0_marine_enum_s1_address),    //                  s1.address
@@ -388,7 +491,7 @@ module lab62_soc (
 		.out_port   (marine_enum_export)                           // external_connection.export
 	);
 
-	lab62_soc_missile1_x missile1_x (
+	lab62_soc_explosion_x missile1_x (
 		.clk        (clk_clk),                                    //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),            //               reset.reset_n
 		.address    (mm_interconnect_0_missile1_x_s1_address),    //                  s1.address
@@ -399,7 +502,7 @@ module lab62_soc (
 		.out_port   (missile1_x_export)                           // external_connection.export
 	);
 
-	lab62_soc_missile1_x missile1_y (
+	lab62_soc_explosion_x missile1_y (
 		.clk        (clk_clk),                                    //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),            //               reset.reset_n
 		.address    (mm_interconnect_0_missile1_y_s1_address),    //                  s1.address
@@ -410,7 +513,7 @@ module lab62_soc (
 		.out_port   (missile1_y_export)                           // external_connection.export
 	);
 
-	lab62_soc_missile1_x missile2_x (
+	lab62_soc_explosion_x missile2_x (
 		.clk        (clk_clk),                                    //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),            //               reset.reset_n
 		.address    (mm_interconnect_0_missile2_x_s1_address),    //                  s1.address
@@ -421,7 +524,7 @@ module lab62_soc (
 		.out_port   (missile2_x_export)                           // external_connection.export
 	);
 
-	lab62_soc_missile1_x missile2_y (
+	lab62_soc_explosion_x missile2_y (
 		.clk        (clk_clk),                                    //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),            //               reset.reset_n
 		.address    (mm_interconnect_0_missile2_y_s1_address),    //                  s1.address
@@ -475,12 +578,42 @@ module lab62_soc (
 		.freeze     (1'b0)                                              // (terminated)
 	);
 
+	lab62_soc_p1_accent p1_accent (
+		.clk        (clk_clk),                                   //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address    (mm_interconnect_0_p1_accent_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_p1_accent_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_p1_accent_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_p1_accent_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_p1_accent_s1_readdata),   //                    .readdata
+		.out_port   (p1_accent_export)                           // external_connection.export
+	);
+
 	lab62_soc_collisionP1 p1_hit (
 		.clk      (clk_clk),                              //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),      //               reset.reset_n
 		.address  (mm_interconnect_0_p1_hit_s1_address),  //                  s1.address
 		.readdata (mm_interconnect_0_p1_hit_s1_readdata), //                    .readdata
 		.in_port  (p1_hit_export)                         // external_connection.export
+	);
+
+	lab62_soc_collisionP1 p1_suicide (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_0_p1_suicide_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_p1_suicide_s1_readdata), //                    .readdata
+		.in_port  (p1_suicide_export)                         // external_connection.export
+	);
+
+	lab62_soc_p1_accent p2_accent (
+		.clk        (clk_clk),                                   //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address    (mm_interconnect_0_p2_accent_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_p2_accent_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_p2_accent_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_p2_accent_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_p2_accent_s1_readdata),   //                    .readdata
+		.out_port   (p2_accent_export)                           // external_connection.export
 	);
 
 	lab62_soc_collisionP1 p2_hit (
@@ -491,7 +624,15 @@ module lab62_soc (
 		.in_port  (p2_hit_export)                         // external_connection.export
 	);
 
-	lab62_soc_missile1_x player1x (
+	lab62_soc_collisionP1 p2_suicide (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_0_p2_suicide_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_p2_suicide_s1_readdata), //                    .readdata
+		.in_port  (p2_suicide_export)                         // external_connection.export
+	);
+
+	lab62_soc_explosion_x player1x (
 		.clk        (clk_clk),                                  //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),          //               reset.reset_n
 		.address    (mm_interconnect_0_player1x_s1_address),    //                  s1.address
@@ -502,7 +643,7 @@ module lab62_soc (
 		.out_port   (player1x_export)                           // external_connection.export
 	);
 
-	lab62_soc_missile1_x player1y (
+	lab62_soc_explosion_x player1y (
 		.clk        (clk_clk),                                  //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),          //               reset.reset_n
 		.address    (mm_interconnect_0_player1y_s1_address),    //                  s1.address
@@ -513,7 +654,7 @@ module lab62_soc (
 		.out_port   (player1y_export)                           // external_connection.export
 	);
 
-	lab62_soc_missile1_x player2x (
+	lab62_soc_explosion_x player2x (
 		.clk        (clk_clk),                                  //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),          //               reset.reset_n
 		.address    (mm_interconnect_0_player2x_s1_address),    //                  s1.address
@@ -524,7 +665,7 @@ module lab62_soc (
 		.out_port   (player2x_export)                           // external_connection.export
 	);
 
-	lab62_soc_missile1_x player2y (
+	lab62_soc_explosion_x player2y (
 		.clk        (clk_clk),                                  //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),          //               reset.reset_n
 		.address    (mm_interconnect_0_player2y_s1_address),    //                  s1.address
@@ -535,7 +676,7 @@ module lab62_soc (
 		.out_port   (player2y_export)                           // external_connection.export
 	);
 
-	lab62_soc_keycode scorep1 (
+	lab62_soc_explosion_enum scorep1 (
 		.clk        (clk_clk),                                 //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),         //               reset.reset_n
 		.address    (mm_interconnect_0_scorep1_s1_address),    //                  s1.address
@@ -546,7 +687,7 @@ module lab62_soc (
 		.out_port   (scorep1_export)                           // external_connection.export
 	);
 
-	lab62_soc_keycode scorep2 (
+	lab62_soc_explosion_enum scorep2 (
 		.clk        (clk_clk),                                 //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),         //               reset.reset_n
 		.address    (mm_interconnect_0_scorep2_s1_address),    //                  s1.address
@@ -623,6 +764,28 @@ module lab62_soc (
 		.SS_n          (spi0_SS_n)                                            //                 .export
 	);
 
+	lab62_soc_explosion_x splashscreen_x (
+		.clk        (clk_clk),                                        //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address    (mm_interconnect_0_splashscreen_x_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_splashscreen_x_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_splashscreen_x_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_splashscreen_x_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_splashscreen_x_s1_readdata),   //                    .readdata
+		.out_port   (splashscreen_x_export)                           // external_connection.export
+	);
+
+	lab62_soc_explosion_x splashscreen_y (
+		.clk        (clk_clk),                                        //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address    (mm_interconnect_0_splashscreen_y_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_splashscreen_y_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_splashscreen_y_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_splashscreen_y_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_splashscreen_y_s1_readdata),   //                    .readdata
+		.out_port   (splashscreen_y_export)                           // external_connection.export
+	);
+
 	lab62_soc_sprite2_animation sprite2_animation (
 		.clk        (clk_clk),                                           //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                   //               reset.reset_n
@@ -634,7 +797,7 @@ module lab62_soc (
 		.out_port   (sprite2_animation_export)                           // external_connection.export
 	);
 
-	lab62_soc_keycode sprite_enum (
+	lab62_soc_explosion_enum sprite_enum (
 		.clk        (clk_clk),                                     //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),             //               reset.reset_n
 		.address    (mm_interconnect_0_sprite_enum_s1_address),    //                  s1.address
@@ -645,7 +808,7 @@ module lab62_soc (
 		.out_port   (sprite_enum_extern_export)                    // external_connection.export
 	);
 
-	lab62_soc_keycode sprite_enum2 (
+	lab62_soc_explosion_enum sprite_enum2 (
 		.clk        (clk_clk),                                      //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),              //               reset.reset_n
 		.address    (mm_interconnect_0_sprite_enum2_s1_address),    //                  s1.address
@@ -718,10 +881,29 @@ module lab62_soc (
 		.nios2_gen2_0_instruction_master_waitrequest    (nios2_gen2_0_instruction_master_waitrequest),                 //                                         .waitrequest
 		.nios2_gen2_0_instruction_master_read           (nios2_gen2_0_instruction_master_read),                        //                                         .read
 		.nios2_gen2_0_instruction_master_readdata       (nios2_gen2_0_instruction_master_readdata),                    //                                         .readdata
+		.collision_ms1_s1_address                       (mm_interconnect_0_collision_ms1_s1_address),                  //                         collision_ms1_s1.address
+		.collision_ms1_s1_readdata                      (mm_interconnect_0_collision_ms1_s1_readdata),                 //                                         .readdata
+		.collision_ms2_s1_address                       (mm_interconnect_0_collision_ms2_s1_address),                  //                         collision_ms2_s1.address
+		.collision_ms2_s1_readdata                      (mm_interconnect_0_collision_ms2_s1_readdata),                 //                                         .readdata
 		.collisionP1_s1_address                         (mm_interconnect_0_collisionp1_s1_address),                    //                           collisionP1_s1.address
 		.collisionP1_s1_readdata                        (mm_interconnect_0_collisionp1_s1_readdata),                   //                                         .readdata
 		.collisionP2_s1_address                         (mm_interconnect_0_collisionp2_s1_address),                    //                           collisionP2_s1.address
 		.collisionP2_s1_readdata                        (mm_interconnect_0_collisionp2_s1_readdata),                   //                                         .readdata
+		.explosion_enum_s1_address                      (mm_interconnect_0_explosion_enum_s1_address),                 //                        explosion_enum_s1.address
+		.explosion_enum_s1_write                        (mm_interconnect_0_explosion_enum_s1_write),                   //                                         .write
+		.explosion_enum_s1_readdata                     (mm_interconnect_0_explosion_enum_s1_readdata),                //                                         .readdata
+		.explosion_enum_s1_writedata                    (mm_interconnect_0_explosion_enum_s1_writedata),               //                                         .writedata
+		.explosion_enum_s1_chipselect                   (mm_interconnect_0_explosion_enum_s1_chipselect),              //                                         .chipselect
+		.explosion_x_s1_address                         (mm_interconnect_0_explosion_x_s1_address),                    //                           explosion_x_s1.address
+		.explosion_x_s1_write                           (mm_interconnect_0_explosion_x_s1_write),                      //                                         .write
+		.explosion_x_s1_readdata                        (mm_interconnect_0_explosion_x_s1_readdata),                   //                                         .readdata
+		.explosion_x_s1_writedata                       (mm_interconnect_0_explosion_x_s1_writedata),                  //                                         .writedata
+		.explosion_x_s1_chipselect                      (mm_interconnect_0_explosion_x_s1_chipselect),                 //                                         .chipselect
+		.explosion_y_s1_address                         (mm_interconnect_0_explosion_y_s1_address),                    //                           explosion_y_s1.address
+		.explosion_y_s1_write                           (mm_interconnect_0_explosion_y_s1_write),                      //                                         .write
+		.explosion_y_s1_readdata                        (mm_interconnect_0_explosion_y_s1_readdata),                   //                                         .readdata
+		.explosion_y_s1_writedata                       (mm_interconnect_0_explosion_y_s1_writedata),                  //                                         .writedata
+		.explosion_y_s1_chipselect                      (mm_interconnect_0_explosion_y_s1_chipselect),                 //                                         .chipselect
 		.hex_digits_pio_s1_address                      (mm_interconnect_0_hex_digits_pio_s1_address),                 //                        hex_digits_pio_s1.address
 		.hex_digits_pio_s1_write                        (mm_interconnect_0_hex_digits_pio_s1_write),                   //                                         .write
 		.hex_digits_pio_s1_readdata                     (mm_interconnect_0_hex_digits_pio_s1_readdata),                //                                         .readdata
@@ -811,10 +993,24 @@ module lab62_soc (
 		.onchip_memory2_0_s1_byteenable                 (mm_interconnect_0_onchip_memory2_0_s1_byteenable),            //                                         .byteenable
 		.onchip_memory2_0_s1_chipselect                 (mm_interconnect_0_onchip_memory2_0_s1_chipselect),            //                                         .chipselect
 		.onchip_memory2_0_s1_clken                      (mm_interconnect_0_onchip_memory2_0_s1_clken),                 //                                         .clken
+		.p1_accent_s1_address                           (mm_interconnect_0_p1_accent_s1_address),                      //                             p1_accent_s1.address
+		.p1_accent_s1_write                             (mm_interconnect_0_p1_accent_s1_write),                        //                                         .write
+		.p1_accent_s1_readdata                          (mm_interconnect_0_p1_accent_s1_readdata),                     //                                         .readdata
+		.p1_accent_s1_writedata                         (mm_interconnect_0_p1_accent_s1_writedata),                    //                                         .writedata
+		.p1_accent_s1_chipselect                        (mm_interconnect_0_p1_accent_s1_chipselect),                   //                                         .chipselect
 		.p1_hit_s1_address                              (mm_interconnect_0_p1_hit_s1_address),                         //                                p1_hit_s1.address
 		.p1_hit_s1_readdata                             (mm_interconnect_0_p1_hit_s1_readdata),                        //                                         .readdata
+		.p1_suicide_s1_address                          (mm_interconnect_0_p1_suicide_s1_address),                     //                            p1_suicide_s1.address
+		.p1_suicide_s1_readdata                         (mm_interconnect_0_p1_suicide_s1_readdata),                    //                                         .readdata
+		.p2_accent_s1_address                           (mm_interconnect_0_p2_accent_s1_address),                      //                             p2_accent_s1.address
+		.p2_accent_s1_write                             (mm_interconnect_0_p2_accent_s1_write),                        //                                         .write
+		.p2_accent_s1_readdata                          (mm_interconnect_0_p2_accent_s1_readdata),                     //                                         .readdata
+		.p2_accent_s1_writedata                         (mm_interconnect_0_p2_accent_s1_writedata),                    //                                         .writedata
+		.p2_accent_s1_chipselect                        (mm_interconnect_0_p2_accent_s1_chipselect),                   //                                         .chipselect
 		.p2_hit_s1_address                              (mm_interconnect_0_p2_hit_s1_address),                         //                                p2_hit_s1.address
 		.p2_hit_s1_readdata                             (mm_interconnect_0_p2_hit_s1_readdata),                        //                                         .readdata
+		.p2_suicide_s1_address                          (mm_interconnect_0_p2_suicide_s1_address),                     //                            p2_suicide_s1.address
+		.p2_suicide_s1_readdata                         (mm_interconnect_0_p2_suicide_s1_readdata),                    //                                         .readdata
 		.player1x_s1_address                            (mm_interconnect_0_player1x_s1_address),                       //                              player1x_s1.address
 		.player1x_s1_write                              (mm_interconnect_0_player1x_s1_write),                         //                                         .write
 		.player1x_s1_readdata                           (mm_interconnect_0_player1x_s1_readdata),                      //                                         .readdata
@@ -865,6 +1061,16 @@ module lab62_soc (
 		.spi_0_spi_control_port_readdata                (mm_interconnect_0_spi_0_spi_control_port_readdata),           //                                         .readdata
 		.spi_0_spi_control_port_writedata               (mm_interconnect_0_spi_0_spi_control_port_writedata),          //                                         .writedata
 		.spi_0_spi_control_port_chipselect              (mm_interconnect_0_spi_0_spi_control_port_chipselect),         //                                         .chipselect
+		.splashscreen_x_s1_address                      (mm_interconnect_0_splashscreen_x_s1_address),                 //                        splashscreen_x_s1.address
+		.splashscreen_x_s1_write                        (mm_interconnect_0_splashscreen_x_s1_write),                   //                                         .write
+		.splashscreen_x_s1_readdata                     (mm_interconnect_0_splashscreen_x_s1_readdata),                //                                         .readdata
+		.splashscreen_x_s1_writedata                    (mm_interconnect_0_splashscreen_x_s1_writedata),               //                                         .writedata
+		.splashscreen_x_s1_chipselect                   (mm_interconnect_0_splashscreen_x_s1_chipselect),              //                                         .chipselect
+		.splashscreen_y_s1_address                      (mm_interconnect_0_splashscreen_y_s1_address),                 //                        splashscreen_y_s1.address
+		.splashscreen_y_s1_write                        (mm_interconnect_0_splashscreen_y_s1_write),                   //                                         .write
+		.splashscreen_y_s1_readdata                     (mm_interconnect_0_splashscreen_y_s1_readdata),                //                                         .readdata
+		.splashscreen_y_s1_writedata                    (mm_interconnect_0_splashscreen_y_s1_writedata),               //                                         .writedata
+		.splashscreen_y_s1_chipselect                   (mm_interconnect_0_splashscreen_y_s1_chipselect),              //                                         .chipselect
 		.sprite2_animation_s1_address                   (mm_interconnect_0_sprite2_animation_s1_address),              //                     sprite2_animation_s1.address
 		.sprite2_animation_s1_write                     (mm_interconnect_0_sprite2_animation_s1_write),                //                                         .write
 		.sprite2_animation_s1_readdata                  (mm_interconnect_0_sprite2_animation_s1_readdata),             //                                         .readdata

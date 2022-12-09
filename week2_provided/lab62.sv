@@ -68,7 +68,7 @@ logic Reset_h, vssig, blank, sync, VGA_Clk;
 	logic [3:0] hex_num_4, hex_num_3, hex_num_1, hex_num_0; //4 bit input hex digits
 	logic [1:0] signs;
 	logic [1:0] hundreds;
-	logic [9:0] drawxsig, drawysig, p1xsig, p1ysig, p2xsig, p2ysig, ms1xsig, ms1ysig, ms2xsig, ms2ysig,  ballsizesig, ballsizesig2;
+	logic [9:0] drawxsig, drawysig, p1xsig, p1ysig, p2xsig, p2ysig, ms1xsig, ms1ysig, ms2xsig, ms2ysig,  ballsizesig, ballsizesig2, explosion_x, explosion_y;
 	logic [7:0] Red, Blue, Green;
 	logic [7:0] keycode, keycode1, keycode2, keycode3, keycode4, keycode5;
 
@@ -121,7 +121,7 @@ logic Reset_h, vssig, blank, sync, VGA_Clk;
 	
 	logic [9:0] Dir_x, Dir_y;
 	logic [9:0] fake_LED;
-	logic [7:0] sprite_enum, sprite_enum2, marine_enum, scorep1, scorep2;
+	logic [7:0] sprite_enum, sprite_enum2, marine_enum, scorep1, scorep2, explosion_enum;
 	
 	logic [2:0] sprite2_animation;
 	
@@ -185,6 +185,8 @@ logic Reset_h, vssig, blank, sync, VGA_Clk;
 		//collision bit
 		.collisionp1_export(collision1),
 		.collisionp2_export(collision2),
+		.collision_ms1_export(collision_ms1),
+		.collision_ms2_export(collision_ms2),
 		//player 2 animation index
 		.sprite2_animation_export(sprite2_animation),
 		
@@ -194,9 +196,29 @@ logic Reset_h, vssig, blank, sync, VGA_Clk;
 		
 		//hit detection bit
 		.p1_hit_export(p1_hit),
-		.p2_hit_export(p2_hit)
+		.p2_hit_export(p2_hit),
+		.p1_suicide_export(p1_suicide),
+		.p2_suicide_export(p2_suicide),
+		
+		//explosion control signals
+		.explosion_x_export(explosion_x),
+		.explosion_y_export(explosion_y),
+		.explosion_enum_export(explosion_enum),
+		
+		//player accent values
+		.p1_accent_export(p1_accent),
+		.p2_accent_export(p2_accent),
+		
+		// splash screen info
+		.splashscreen_x_export(splashscreen_x),
+		.splashscreen_y_export(splashscreen_y)
 		
 	 );
+	 
+logic[9:0] splashscreen_x,splashscreen_y;
+	 
+logic [23:0] p1_accent, p2_accent;
+logic p1_suicide, p2_suicide;
 
 //instantiate a vga_controller, ball, and color_mapper here with the ports.
 	vga_controller c1(		
@@ -224,6 +246,9 @@ logic Reset_h, vssig, blank, sync, VGA_Clk;
 						.ms1y(ms1ysig),
 						.ms2x(ms2xsig),
 						.ms2y(ms2ysig),
+						.explosion_x(explosion_x),
+						.explosion_y(explosion_y),
+						.explosion_enum(explosion_enum),
 						.Ball_size(ballsizesig),
 						.clk(MAX10_CLK1_50),
 						.blank(blank),
@@ -233,21 +258,46 @@ logic Reset_h, vssig, blank, sync, VGA_Clk;
 						.sprite2_animation(sprite2_animation[2:0]),
 						.scorep1(scorep1),
 						.scorep2(scorep2),
+						.p1_accent(p1_accent), 
+						.p2_accent(p2_accent),
+						.splashscreen_x(splashscreen_x),
+						.splashscreen_y(splashscreen_y),
 						//output
 						.Red(Red), 
 						.Green(Green),	
 						.Blue(Blue) );
-	logic collision1, collision2;
+	logic collision1, collision2, collision_ms1, collision_ms2;
+	
+	// detect wall collision of characters
 	collision_detect cd(	.clk(MAX10_CLK1_50),
-								.x_pos1(p1xsig),
-								.y_pos1(p1ysig),
+								.x_pos1(p1xsig + 16),
+								.y_pos1(p1ysig + 24),
 								.collision1(collision1),
-								.x_pos2(p2xsig),
-								.y_pos2(p2ysig),
+								.x_pos2(p2xsig + 16),
+								.y_pos2(p2ysig + 16),
 								.collision2(collision2),
+								);
+	// detect wall collision of missiles
+	collision_detect cd2(	.clk(MAX10_CLK1_50),
+								.x_pos1(ms1xsig),
+								.y_pos1(ms1ysig),
+								.collision1(collision_ms1),
+								.x_pos2(ms2xsig),
+								.y_pos2(ms2ysig),
+								.collision2(collision_ms2),
 								);
 	is_hit p1h (.p1x(p1xsig), .p1y(p1ysig), .p2x(ms2xsig), .p2y(ms2ysig), .hit(p1_hit));
 	is_hit p2h (.p1x(p2xsig), .p1y(p2ysig), .p2x(ms1xsig), .p2y(ms1ysig), .hit(p2_hit));
+	is_hit p3h (.p1x(p1xsig), .p1y(p1ysig), .p2x(ms1xsig), .p2y(ms1ysig), .hit(p1_suicide));
+	is_hit p4h (.p1x(p2xsig), .p1y(p2ysig), .p2x(ms2xsig), .p2y(ms2ysig), .hit(p2_suicide));
+	
+	logic [1:0] x,y;
+	logic [2:0] button;
+	joystick j1(.clk(MAX10_CLK1_50),.x(x),.y(y),.button(button));
+	
+	assign LEDR[2:0] = button;
+	assign LEDR[4:3] = x;
+	assign LEDR[6:5] = y;
 	
 	assign VGA_HS = hssig;
 	assign VGA_VS = vssig;

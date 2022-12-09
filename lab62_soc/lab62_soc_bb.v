@@ -1,7 +1,13 @@
 
 module lab62_soc (
 	clk_clk,
+	collision_ms1_export,
+	collision_ms2_export,
 	collisionp1_export,
+	collisionp2_export,
+	explosion_enum_export,
+	explosion_x_export,
+	explosion_y_export,
 	hex_digits_export,
 	key_external_connection_export,
 	keycode_export,
@@ -12,9 +18,23 @@ module lab62_soc (
 	keycode5_export,
 	leds_export,
 	marine_enum_export,
+	missile1_x_export,
+	missile1_y_export,
+	missile2_x_export,
+	missile2_y_export,
+	p1_accent_export,
+	p1_hit_export,
+	p1_suicide_export,
+	p2_accent_export,
+	p2_hit_export,
+	p2_suicide_export,
 	player1x_export,
 	player1y_export,
+	player2x_export,
+	player2y_export,
 	reset_reset_n,
+	scorep1_export,
+	scorep2_export,
 	sdram_clk_clk,
 	sdram_wire_addr,
 	sdram_wire_ba,
@@ -35,20 +55,17 @@ module lab62_soc (
 	usb_gpx_export,
 	usb_irq_export,
 	usb_rst_export,
-	collisionp2_export,
-	player2x_export,
-	player2y_export,
-	missile1_x_export,
-	missile1_y_export,
-	missile2_x_export,
-	missile2_y_export,
-	scorep1_export,
-	scorep2_export,
-	p1_hit_export,
-	p2_hit_export);	
+	splashscreen_x_export,
+	splashscreen_y_export);	
 
 	input		clk_clk;
+	input		collision_ms1_export;
+	input		collision_ms2_export;
 	input		collisionp1_export;
+	input		collisionp2_export;
+	output	[7:0]	explosion_enum_export;
+	output	[9:0]	explosion_x_export;
+	output	[9:0]	explosion_y_export;
 	output	[15:0]	hex_digits_export;
 	input	[1:0]	key_external_connection_export;
 	output	[7:0]	keycode_export;
@@ -59,9 +76,23 @@ module lab62_soc (
 	output	[7:0]	keycode5_export;
 	output	[13:0]	leds_export;
 	output	[7:0]	marine_enum_export;
+	output	[9:0]	missile1_x_export;
+	output	[9:0]	missile1_y_export;
+	output	[9:0]	missile2_x_export;
+	output	[9:0]	missile2_y_export;
+	output	[23:0]	p1_accent_export;
+	input		p1_hit_export;
+	input		p1_suicide_export;
+	output	[23:0]	p2_accent_export;
+	input		p2_hit_export;
+	input		p2_suicide_export;
 	output	[9:0]	player1x_export;
 	output	[9:0]	player1y_export;
+	output	[9:0]	player2x_export;
+	output	[9:0]	player2y_export;
 	input		reset_reset_n;
+	output	[7:0]	scorep1_export;
+	output	[7:0]	scorep2_export;
 	output		sdram_clk_clk;
 	output	[12:0]	sdram_wire_addr;
 	output	[1:0]	sdram_wire_ba;
@@ -82,15 +113,6 @@ module lab62_soc (
 	input		usb_gpx_export;
 	input		usb_irq_export;
 	output		usb_rst_export;
-	input		collisionp2_export;
-	output	[9:0]	player2x_export;
-	output	[9:0]	player2y_export;
-	output	[9:0]	missile1_x_export;
-	output	[9:0]	missile1_y_export;
-	output	[9:0]	missile2_x_export;
-	output	[9:0]	missile2_y_export;
-	output	[7:0]	scorep1_export;
-	output	[7:0]	scorep2_export;
-	input		p1_hit_export;
-	input		p2_hit_export;
+	output	[9:0]	splashscreen_x_export;
+	output	[9:0]	splashscreen_y_export;
 endmodule

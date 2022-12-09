@@ -1,65 +1,105 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst lab62_soc.sprite2_animation -pg 1 -lvl 3 -y 130
-preplace inst lab62_soc.keycode5 -pg 1 -lvl 3 -y 830
-preplace inst lab62_soc.keycode -pg 1 -lvl 3 -y 1730
-preplace inst lab62_soc.collisionP1 -pg 1 -lvl 3 -y 30
-preplace inst lab62_soc.sysid_qsys_0 -pg 1 -lvl 3 -y 1550
-preplace inst lab62_soc.nios2_gen2_0 -pg 1 -lvl 2 -y 880
-preplace inst lab62_soc.sprite_enum2 -pg 1 -lvl 3 -y 430
-preplace inst lab62_soc.sdram_pll -pg 1 -lvl 3 -y 1030
-preplace inst lab62_soc.marine_enum -pg 1 -lvl 3 -y 330
-preplace inst lab62_soc.jtag_uart_0 -pg 1 -lvl 3 -y 1230
-preplace inst lab62_soc.player1x -pg 1 -lvl 3 -y 2410
+preplace inst lab62_soc.sprite2_animation -pg 1 -lvl 3 -y 1130
+preplace inst lab62_soc.p2_hit -pg 1 -lvl 3 -y 2030
+preplace inst lab62_soc.keycode5 -pg 1 -lvl 3 -y 2730
+preplace inst lab62_soc.keycode -pg 1 -lvl 3 -y 3730
+preplace inst lab62_soc.explosion_x -pg 1 -lvl 3 -y 930
+preplace inst lab62_soc.collisionP1 -pg 1 -lvl 3 -y 130
+preplace inst lab62_soc.sysid_qsys_0 -pg 1 -lvl 3 -y 3550
+preplace inst lab62_soc.p2_suicide -pg 1 -lvl 3 -y 730
+preplace inst lab62_soc.nios2_gen2_0 -pg 1 -lvl 2 -y 1380
+preplace inst lab62_soc.explosion_y -pg 1 -lvl 3 -y 3450
+preplace inst lab62_soc.collisionP2 -pg 1 -lvl 3 -y 530
+preplace inst lab62_soc.sprite_enum2 -pg 1 -lvl 3 -y 2330
+preplace inst lab62_soc.sdram_pll -pg 1 -lvl 3 -y 2930
+preplace inst lab62_soc.scorep1 -pg 1 -lvl 3 -y 2130
+preplace inst lab62_soc.p1_hit -pg 1 -lvl 3 -y 1930
+preplace inst lab62_soc.marine_enum -pg 1 -lvl 3 -y 1330
+preplace inst lab62_soc.jtag_uart_0 -pg 1 -lvl 3 -y 3130
+preplace inst lab62_soc.scorep2 -pg 1 -lvl 3 -y 2230
+preplace inst lab62_soc.player1x -pg 1 -lvl 3 -y 4410
 preplace inst lab62_soc.nios2_gen2_0.cpu -pg 1
-preplace inst lab62_soc.usb_rst -pg 1 -lvl 3 -y 2210
-preplace inst lab62_soc.player1y -pg 1 -lvl 3 -y 2510
-preplace inst lab62_soc.key -pg 1 -lvl 3 -y 1630
-preplace inst lab62_soc.leds_pio -pg 1 -lvl 3 -y 1910
-preplace inst lab62_soc.usb_irq -pg 1 -lvl 3 -y 2110
-preplace inst lab62_soc.usb_gpx -pg 1 -lvl 3 -y 2010
-preplace inst lab62_soc.hex_digits_pio -pg 1 -lvl 3 -y 2310
-preplace inst lab62_soc.clk_0 -pg 1 -lvl 1 -y 790
-preplace inst lab62_soc.sdram -pg 1 -lvl 3 -y 1130
+preplace inst lab62_soc.collision_ms1 -pg 1 -lvl 3 -y 330
+preplace inst lab62_soc.usb_rst -pg 1 -lvl 3 -y 4210
+preplace inst lab62_soc.player1y -pg 1 -lvl 3 -y 4510
+preplace inst lab62_soc.key -pg 1 -lvl 3 -y 3630
+preplace inst lab62_soc.collision_ms2 -pg 1 -lvl 3 -y 630
+preplace inst lab62_soc.p2_accent -pg 1 -lvl 3 -y 430
+preplace inst lab62_soc.leds_pio -pg 1 -lvl 3 -y 3910
+preplace inst lab62_soc.usb_irq -pg 1 -lvl 3 -y 4110
+preplace inst lab62_soc.usb_gpx -pg 1 -lvl 3 -y 4010
+preplace inst lab62_soc.hex_digits_pio -pg 1 -lvl 3 -y 4310
+preplace inst lab62_soc.clk_0 -pg 1 -lvl 1 -y 1310
+preplace inst lab62_soc.sdram -pg 1 -lvl 3 -y 3030
+preplace inst lab62_soc.player2x -pg 1 -lvl 3 -y 1730
 preplace inst lab62_soc.nios2_gen2_0.reset_bridge -pg 1
-preplace inst lab62_soc.sprite_enum -pg 1 -lvl 3 -y 930
-preplace inst lab62_soc.spi_0 -pg 1 -lvl 3 -y 1330
+preplace inst lab62_soc.missile2_x -pg 1 -lvl 3 -y 1530
+preplace inst lab62_soc.missile1_x -pg 1 -lvl 3 -y 1030
+preplace inst lab62_soc.player2y -pg 1 -lvl 3 -y 1830
+preplace inst lab62_soc.missile2_y -pg 1 -lvl 3 -y 1630
+preplace inst lab62_soc.missile1_y -pg 1 -lvl 3 -y 1430
+preplace inst lab62_soc.explosion_enum -pg 1 -lvl 3 -y 830
+preplace inst lab62_soc.sprite_enum -pg 1 -lvl 3 -y 2830
+preplace inst lab62_soc.spi_0 -pg 1 -lvl 3 -y 3230
 preplace inst lab62_soc.nios2_gen2_0.clock_bridge -pg 1
-preplace inst lab62_soc.keycode1 -pg 1 -lvl 3 -y 230
-preplace inst lab62_soc.onchip_memory2_0 -pg 1 -lvl 3 -y 1830
-preplace inst lab62_soc.keycode2 -pg 1 -lvl 3 -y 530
-preplace inst lab62_soc.keycode3 -pg 1 -lvl 3 -y 630
-preplace inst lab62_soc.timer_0 -pg 1 -lvl 3 -y 1450
-preplace inst lab62_soc.keycode4 -pg 1 -lvl 3 -y 730
+preplace inst lab62_soc.keycode1 -pg 1 -lvl 3 -y 1230
+preplace inst lab62_soc.p1_suicide -pg 1 -lvl 3 -y 230
+preplace inst lab62_soc.p1_accent -pg 1 -lvl 3 -y 30
+preplace inst lab62_soc.onchip_memory2_0 -pg 1 -lvl 3 -y 3830
+preplace inst lab62_soc.keycode2 -pg 1 -lvl 3 -y 2430
+preplace inst lab62_soc.keycode3 -pg 1 -lvl 3 -y 2530
+preplace inst lab62_soc.timer_0 -pg 1 -lvl 3 -y 3350
+preplace inst lab62_soc.keycode4 -pg 1 -lvl 3 -y 2630
 preplace inst lab62_soc -pg 1 -lvl 1 -y 40 -regy -20
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.spi0,(SLAVE)spi_0.external) 1 0 3 NJ 1360 NJ 1360 NJ
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)player1y.external_connection,(SLAVE)lab62_soc.player1y) 1 0 3 NJ 2540 NJ 2540 NJ
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)lab62_soc.reset) 1 0 1 NJ
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.player1x,(SLAVE)player1x.external_connection) 1 0 3 NJ 2440 NJ 2440 NJ
-preplace netloc FAN_OUT<net_container>lab62_soc</net_container>(SLAVE)spi_0.irq,(SLAVE)jtag_uart_0.irq,(MASTER)nios2_gen2_0.irq,(SLAVE)timer_0.irq) 1 2 1 760
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.usb_gpx,(SLAVE)usb_gpx.external_connection) 1 0 3 NJ 2040 NJ 2040 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)scorep2.external_connection,(SLAVE)lab62_soc.scorep2) 1 0 3 NJ 1600 NJ 1600 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)player1y.external_connection,(SLAVE)lab62_soc.player1y) 1 0 3 NJ 4540 NJ 4540 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)explosion_x.external_connection,(SLAVE)lab62_soc.explosion_x) 1 0 3 NJ 960 NJ 960 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)collision_ms1.external_connection,(SLAVE)lab62_soc.collision_ms1) 1 0 3 NJ 360 NJ 360 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)spi_0.external,(SLAVE)lab62_soc.spi0) 1 0 3 NJ 2820 NJ 2820 NJ
+preplace netloc INTERCONNECT<net_container>lab62_soc</net_container>(SLAVE)sprite_enum2.s1,(SLAVE)missile2_y.s1,(SLAVE)collision_ms1.s1,(SLAVE)collisionP1.s1,(SLAVE)spi_0.spi_control_port,(SLAVE)scorep2.s1,(SLAVE)p1_accent.s1,(SLAVE)explosion_x.s1,(SLAVE)explosion_y.s1,(SLAVE)onchip_memory2_0.s1,(SLAVE)timer_0.s1,(SLAVE)leds_pio.s1,(SLAVE)missile1_x.s1,(SLAVE)key.s1,(SLAVE)p1_suicide.s1,(SLAVE)collisionP2.s1,(SLAVE)collision_ms2.s1,(SLAVE)sprite_enum.s1,(SLAVE)sdram_pll.pll_slave,(SLAVE)usb_irq.s1,(SLAVE)keycode5.s1,(SLAVE)missile1_y.s1,(SLAVE)p2_accent.s1,(SLAVE)sysid_qsys_0.control_slave,(SLAVE)player1y.s1,(SLAVE)p2_hit.s1,(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)keycode1.s1,(SLAVE)usb_rst.s1,(SLAVE)hex_digits_pio.s1,(SLAVE)sprite2_animation.s1,(SLAVE)player2x.s1,(MASTER)nios2_gen2_0.data_master,(MASTER)nios2_gen2_0.instruction_master,(SLAVE)nios2_gen2_0.debug_mem_slave,(SLAVE)keycode2.s1,(SLAVE)usb_gpx.s1,(SLAVE)player1x.s1,(SLAVE)sdram.s1,(SLAVE)keycode.s1,(SLAVE)scorep1.s1,(SLAVE)keycode3.s1,(SLAVE)keycode4.s1,(SLAVE)p1_hit.s1,(SLAVE)player2y.s1,(SLAVE)missile2_x.s1,(SLAVE)explosion_enum.s1,(SLAVE)marine_enum.s1,(SLAVE)p2_suicide.s1) 1 1 2 400 4580 940
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.usb_gpx,(SLAVE)usb_gpx.external_connection) 1 0 3 NJ 4040 NJ 4040 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)player1x.external_connection,(SLAVE)lab62_soc.player1x) 1 0 3 NJ 4120 NJ 4120 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)p1_accent.external_connection,(SLAVE)lab62_soc.p1_accent) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.keycode,(SLAVE)keycode.external_connection) 1 0 3 NJ 2880 NJ 2880 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)collisionP2.external_connection,(SLAVE)lab62_soc.collisionp2) 1 0 3 NJ 560 NJ 560 NJ
 preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>lab62_soc</net_container>(SLAVE)spi_0.irq,(MASTER)nios2_gen2_0.irq,(SLAVE)timer_0.irq,(SLAVE)jtag_uart_0.irq) 1 2 1 760
 preplace netloc EXPORT<net_container>lab62_soc</net_container>(MASTER)sdram_pll.c1,(MASTER)lab62_soc.sdram_clk) 1 3 1 N
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)keycode.external_connection,(SLAVE)lab62_soc.keycode) 1 0 3 NJ 1760 NJ 1760 NJ
-preplace netloc FAN_OUT<net_container>lab62_soc</net_container>(SLAVE)collisionP1.clk,(SLAVE)sprite_enum2.clk,(SLAVE)keycode4.clk,(SLAVE)hex_digits_pio.clk,(SLAVE)timer_0.clk,(SLAVE)onchip_memory2_0.clk1,(SLAVE)sdram_pll.inclk_interface,(SLAVE)sysid_qsys_0.clk,(SLAVE)usb_irq.clk,(SLAVE)player1x.clk,(SLAVE)spi_0.clk,(SLAVE)jtag_uart_0.clk,(SLAVE)keycode1.clk,(SLAVE)marine_enum.clk,(SLAVE)key.clk,(SLAVE)leds_pio.clk,(SLAVE)sprite_enum.clk,(MASTER)clk_0.clk,(SLAVE)keycode5.clk,(SLAVE)usb_rst.clk,(SLAVE)keycode.clk,(SLAVE)sprite2_animation.clk,(SLAVE)nios2_gen2_0.clk,(SLAVE)keycode3.clk,(SLAVE)usb_gpx.clk,(SLAVE)keycode2.clk,(SLAVE)player1y.clk) 1 1 2 380 800 800
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.sdram_wire,(SLAVE)sdram.wire) 1 0 3 NJ 1200 NJ 1200 NJ
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)keycode4.external_connection,(SLAVE)lab62_soc.keycode4) 1 0 3 NJ 760 NJ 760 NJ
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.sprite_enum2_extern,(SLAVE)sprite_enum2.external_connection) 1 0 3 NJ 460 NJ 460 NJ
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)keycode1.external_connection,(SLAVE)lab62_soc.keycode1) 1 0 3 NJ 260 NJ 260 NJ
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.collisionp1,(SLAVE)collisionP1.external_connection) 1 0 3 NJ 60 NJ 60 NJ
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.leds,(SLAVE)leds_pio.external_connection) 1 0 3 NJ 1940 NJ 1940 NJ
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)sprite_enum.external_connection,(SLAVE)lab62_soc.sprite_enum_extern) 1 0 3 NJ 1020 NJ 1020 NJ
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.keycode2,(SLAVE)keycode2.external_connection) 1 0 3 NJ 560 NJ 560 NJ
-preplace netloc INTERCONNECT<net_container>lab62_soc</net_container>(SLAVE)usb_gpx.reset,(SLAVE)leds_pio.reset,(SLAVE)keycode4.reset,(SLAVE)sdram_pll.inclk_interface_reset,(SLAVE)collisionP1.reset,(SLAVE)keycode3.reset,(SLAVE)keycode.reset,(MASTER)clk_0.clk_reset,(SLAVE)usb_rst.reset,(SLAVE)nios2_gen2_0.reset,(SLAVE)sysid_qsys_0.reset,(SLAVE)player1x.reset,(SLAVE)hex_digits_pio.reset,(SLAVE)timer_0.reset,(SLAVE)player1y.reset,(SLAVE)sprite2_animation.reset,(SLAVE)jtag_uart_0.reset,(SLAVE)marine_enum.reset,(SLAVE)sprite_enum2.reset,(SLAVE)onchip_memory2_0.reset1,(SLAVE)sdram.reset,(SLAVE)key.reset,(MASTER)nios2_gen2_0.debug_reset_request,(SLAVE)sprite_enum.reset,(SLAVE)keycode1.reset,(SLAVE)keycode5.reset,(SLAVE)spi_0.reset,(SLAVE)keycode2.reset,(SLAVE)usb_irq.reset) 1 1 2 360 820 780
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.sprite2_animation,(SLAVE)sprite2_animation.external_connection) 1 0 3 NJ 160 NJ 160 NJ
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.marine_enum,(SLAVE)marine_enum.external_connection) 1 0 3 NJ 360 NJ 360 NJ
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)keycode5.external_connection,(SLAVE)lab62_soc.keycode5) 1 0 3 NJ 780 NJ 780 NJ
-preplace netloc INTERCONNECT<net_container>lab62_soc</net_container>(SLAVE)spi_0.spi_control_port,(SLAVE)onchip_memory2_0.s1,(SLAVE)keycode.s1,(SLAVE)keycode2.s1,(SLAVE)keycode5.s1,(SLAVE)usb_rst.s1,(SLAVE)marine_enum.s1,(SLAVE)sdram.s1,(SLAVE)collisionP1.s1,(SLAVE)player1y.s1,(SLAVE)sprite2_animation.s1,(SLAVE)sprite_enum2.s1,(SLAVE)usb_irq.s1,(SLAVE)keycode1.s1,(SLAVE)leds_pio.s1,(MASTER)nios2_gen2_0.instruction_master,(SLAVE)sprite_enum.s1,(SLAVE)sdram_pll.pll_slave,(SLAVE)key.s1,(SLAVE)keycode3.s1,(SLAVE)timer_0.s1,(SLAVE)hex_digits_pio.s1,(MASTER)nios2_gen2_0.data_master,(SLAVE)player1x.s1,(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)sysid_qsys_0.control_slave,(SLAVE)nios2_gen2_0.debug_mem_slave,(SLAVE)keycode4.s1,(SLAVE)usb_gpx.s1) 1 1 2 400 840 820
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.usb_rst,(SLAVE)usb_rst.external_connection) 1 0 3 NJ 2240 NJ 2240 NJ
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)usb_irq.external_connection,(SLAVE)lab62_soc.usb_irq) 1 0 3 NJ 2140 NJ 2140 NJ
-preplace netloc POINT_TO_POINT<net_container>lab62_soc</net_container>(MASTER)sdram_pll.c0,(SLAVE)sdram.clk) 1 2 2 840 1120 1220
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.key_external_connection,(SLAVE)key.external_connection) 1 0 3 NJ 1660 NJ 1660 NJ
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.keycode3,(SLAVE)keycode3.external_connection) 1 0 3 NJ 660 NJ 660 NJ
-preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.hex_digits,(SLAVE)hex_digits_pio.external_connection) 1 0 3 NJ 2340 NJ 2340 NJ
-levelinfo -pg 1 0 150 1330
-levelinfo -hier lab62_soc 160 190 520 1030 1240
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.keycode5,(SLAVE)keycode5.external_connection) 1 0 3 NJ 2760 NJ 2760 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)keycode4.external_connection,(SLAVE)lab62_soc.keycode4) 1 0 3 NJ 1280 NJ 1280 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)key.external_connection,(SLAVE)lab62_soc.key_external_connection) 1 0 3 NJ 2860 NJ 2860 NJ
+preplace netloc FAN_OUT<net_container>lab62_soc</net_container>(SLAVE)collisionP2.clk,(SLAVE)keycode.clk,(SLAVE)key.clk,(SLAVE)keycode4.clk,(SLAVE)usb_gpx.clk,(SLAVE)collisionP1.clk,(SLAVE)usb_irq.clk,(SLAVE)nios2_gen2_0.clk,(SLAVE)usb_rst.clk,(SLAVE)scorep1.clk,(SLAVE)marine_enum.clk,(SLAVE)collision_ms2.clk,(SLAVE)sprite_enum2.clk,(SLAVE)explosion_enum.clk,(SLAVE)leds_pio.clk,(SLAVE)explosion_y.clk,(SLAVE)p1_suicide.clk,(SLAVE)sdram_pll.inclk_interface,(SLAVE)sprite2_animation.clk,(SLAVE)scorep2.clk,(SLAVE)sysid_qsys_0.clk,(SLAVE)explosion_x.clk,(SLAVE)keycode3.clk,(SLAVE)p2_accent.clk,(SLAVE)keycode1.clk,(SLAVE)player1x.clk,(SLAVE)p1_accent.clk,(SLAVE)collision_ms1.clk,(SLAVE)onchip_memory2_0.clk1,(SLAVE)jtag_uart_0.clk,(SLAVE)player1y.clk,(MASTER)clk_0.clk,(SLAVE)sprite_enum.clk,(SLAVE)keycode5.clk,(SLAVE)missile2_y.clk,(SLAVE)p2_suicide.clk,(SLAVE)player2x.clk,(SLAVE)player2y.clk,(SLAVE)hex_digits_pio.clk,(SLAVE)timer_0.clk,(SLAVE)missile2_x.clk,(SLAVE)p1_hit.clk,(SLAVE)p2_hit.clk,(SLAVE)keycode2.clk,(SLAVE)missile1_y.clk,(SLAVE)spi_0.clk,(SLAVE)missile1_x.clk) 1 1 2 380 1340 1020
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.sprite_enum2_extern,(SLAVE)sprite_enum2.external_connection) 1 0 3 NJ 1620 NJ 1620 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)sdram.wire,(SLAVE)lab62_soc.sdram_wire) 1 0 3 NJ 2800 NJ 2800 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)missile1_y.external_connection,(SLAVE)lab62_soc.missile1_y) 1 0 3 NJ 1380 NJ 1320 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)keycode1.external_connection,(SLAVE)lab62_soc.keycode1) 1 0 3 NJ 1180 NJ 1180 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.collisionp1,(SLAVE)collisionP1.external_connection) 1 0 3 NJ 160 NJ 160 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)collision_ms2.external_connection,(SLAVE)lab62_soc.collision_ms2) 1 0 3 NJ 660 NJ 660 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.p2_hit,(SLAVE)p2_hit.external_connection) 1 0 3 NJ 1560 NJ 1560 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.p1_hit,(SLAVE)p1_hit.external_connection) 1 0 3 NJ 1540 NJ 1540 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.keycode2,(SLAVE)keycode2.external_connection) 1 0 3 NJ 1260 NJ 1260 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.sprite2_animation,(SLAVE)sprite2_animation.external_connection) 1 0 3 NJ 1160 NJ 1160 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)leds_pio.external_connection,(SLAVE)lab62_soc.leds) 1 0 3 NJ 2900 NJ 2900 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.sprite_enum_extern,(SLAVE)sprite_enum.external_connection) 1 0 3 NJ 2780 NJ 2780 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)p1_suicide.external_connection,(SLAVE)lab62_soc.p1_suicide) 1 0 3 NJ 260 NJ 260 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)missile1_x.external_connection,(SLAVE)lab62_soc.missile1_x) 1 0 3 NJ 1060 NJ 1060 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.marine_enum,(SLAVE)marine_enum.external_connection) 1 0 3 NJ 1200 NJ 1200 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)keycode3.external_connection,(SLAVE)lab62_soc.keycode3) 1 0 3 NJ 2560 NJ 2560 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)hex_digits_pio.external_connection,(SLAVE)lab62_soc.hex_digits) 1 0 3 NJ 4100 NJ 4100 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.usb_rst,(SLAVE)usb_rst.external_connection) 1 0 3 NJ 4080 NJ 4080 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.player2y,(SLAVE)player2y.external_connection) 1 0 3 NJ 1520 NJ 1520 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.p2_suicide,(SLAVE)p2_suicide.external_connection) 1 0 3 NJ 760 NJ 760 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.missile2_x,(SLAVE)missile2_x.external_connection) 1 0 3 NJ 1220 NJ 1220 NJ
+preplace netloc POINT_TO_POINT<net_container>lab62_soc</net_container>(MASTER)sdram_pll.c0,(SLAVE)sdram.clk) 1 2 2 1080 3020 1380
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)scorep1.external_connection,(SLAVE)lab62_soc.scorep1) 1 0 3 NJ 1580 NJ 1580 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.explosion_y,(SLAVE)explosion_y.external_connection) 1 0 3 NJ 2840 NJ 2840 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.explosion_enum,(SLAVE)explosion_enum.external_connection) 1 0 3 NJ 860 NJ 860 NJ
+preplace netloc INTERCONNECT<net_container>lab62_soc</net_container>(SLAVE)sdram_pll.inclk_interface_reset,(SLAVE)player1x.reset,(SLAVE)p1_accent.reset,(MASTER)clk_0.clk_reset,(SLAVE)scorep2.reset,(SLAVE)hex_digits_pio.reset,(SLAVE)spi_0.reset,(SLAVE)p1_suicide.reset,(SLAVE)explosion_enum.reset,(SLAVE)collision_ms2.reset,(SLAVE)key.reset,(SLAVE)player1y.reset,(SLAVE)sprite_enum2.reset,(SLAVE)p2_suicide.reset,(SLAVE)missile2_y.reset,(SLAVE)onchip_memory2_0.reset1,(SLAVE)usb_irq.reset,(SLAVE)player2y.reset,(SLAVE)explosion_y.reset,(SLAVE)jtag_uart_0.reset,(SLAVE)sprite2_animation.reset,(SLAVE)p2_hit.reset,(SLAVE)nios2_gen2_0.reset,(SLAVE)explosion_x.reset,(SLAVE)keycode.reset,(SLAVE)leds_pio.reset,(SLAVE)keycode5.reset,(SLAVE)collision_ms1.reset,(SLAVE)timer_0.reset,(SLAVE)keycode4.reset,(SLAVE)marine_enum.reset,(SLAVE)p1_hit.reset,(SLAVE)keycode2.reset,(SLAVE)usb_rst.reset,(SLAVE)missile2_x.reset,(SLAVE)scorep1.reset,(SLAVE)collisionP1.reset,(SLAVE)missile1_y.reset,(SLAVE)p2_accent.reset,(SLAVE)missile1_x.reset,(SLAVE)sdram.reset,(SLAVE)sysid_qsys_0.reset,(SLAVE)collisionP2.reset,(SLAVE)keycode1.reset,(MASTER)nios2_gen2_0.debug_reset_request,(SLAVE)player2x.reset,(SLAVE)usb_gpx.reset,(SLAVE)sprite_enum.reset,(SLAVE)keycode3.reset) 1 1 2 360 4560 920
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.usb_irq,(SLAVE)usb_irq.external_connection) 1 0 3 NJ 4060 NJ 4060 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.player2x,(SLAVE)player2x.external_connection) 1 0 3 NJ 1240 NJ 1240 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)lab62_soc.p2_accent,(SLAVE)p2_accent.external_connection) 1 0 3 NJ 460 NJ 460 NJ
+preplace netloc EXPORT<net_container>lab62_soc</net_container>(SLAVE)missile2_y.external_connection,(SLAVE)lab62_soc.missile2_y) 1 0 3 NJ 1300 NJ 1300 NJ
+levelinfo -pg 1 0 150 1490
+levelinfo -hier lab62_soc 160 190 520 1190 1400
