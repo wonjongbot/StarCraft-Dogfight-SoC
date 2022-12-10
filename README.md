@@ -1,6 +1,6 @@
 # StarCraft inspired Top-down PvP Shooter Game on NIOS II SoC with an FPGA
 
-![Front Image](https://raw.githubusercontent.com/wonjongbot/final_project/main/frontimage.png)
+![Front Image](https://raw.githubusercontent.com/wonjongbot/final_project/main/giffront.gif)
 
 [Demo Video that covers most of the functionality](https://youtu.be/uepAv-EOpGw)
 
