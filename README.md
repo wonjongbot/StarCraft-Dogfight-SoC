@@ -2,6 +2,8 @@
 
 ![Front Image](https://raw.githubusercontent.com/wonjongbot/final_project/main/giffront.gif)
 
+_The final version of the game has physics accurate reflection mechanics
+
 [Demo Video that covers most of the functionality](https://youtu.be/uepAv-EOpGw)
 
 ## Controls
@@ -53,7 +55,7 @@
     └─ 📁 usb_kb_bsp    <- and this
 ```
 
-- Please ignore lab61 project files that is hidden in various places (e.g. `lab61_app` folder in `final_project/software`)
+_Please ignore lab61 project files that is hidden in various places (e.g. `lab61_app` folder in `final_project/software`)
 
 - It may take a while to first run the program as it calculates sin and cosine from $[0, 360)$ degrees and stores it into an array for optimizations sake
 
