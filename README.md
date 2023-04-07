@@ -47,7 +47,7 @@ _The final version of the game has physics accurate reflection mechanics_
 
 - All of NIOS II Eclipse projects are stored in `final_project/software` folder. Eclipse is weird where changing the project root makes it fail to reopen the project, so you might have to import the project when you are trying it on a new computer. The projects you will need to import are
 
-``` cmd
+``` txt
 📁 final project
 └─ 📁 workspace <- Select this folder when launching Eclipse
 └─ 📁 software
